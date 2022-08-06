@@ -3,8 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 
 // Component pages
 import { BasicComponent } from "./basic/basic.component";
+import { DepartamentoComponent } from './departamento/departamento.component';
 import { GridjsComponent } from "./gridjs/gridjs.component";
 import { ListjsComponent } from "./listjs/listjs.component";
+import { ZonaComponent } from './zona/zona.component';
 
 const routes: Routes = [
   {
@@ -18,6 +20,14 @@ const routes: Routes = [
   {
     path: "listjs",
     component: ListjsComponent
+  },
+  {
+    path: "departamento",
+    component: DepartamentoComponent
+  },
+  {
+    path: "zona",
+    component: ZonaComponent
   }
 ];
 

@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
-import { BehaviorSubject } from "rxjs";
+import { BehaviorSubject, Observable } from "rxjs";
 import { DommunConstants } from "src/app/common/constants.class";
 import { getFirebaseBackend } from "../../authUtils";
 import { ApiTokenModel } from "../models/api-token.models";
@@ -19,7 +19,8 @@ export class AuthenticationService {
   currentUserValue: any;
 
   private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  public currentUserSubject: BehaviorSubject<string>;
+  public currentUserSubject: BehaviorSubject<string>; 
+  //public currentUser: Observable<User>;
 
   get isLoggedIn() {
     console.log(this.loggedIn);

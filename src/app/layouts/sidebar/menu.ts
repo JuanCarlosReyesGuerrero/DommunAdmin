@@ -1024,6 +1024,18 @@ export const MENU: MenuItem[] = [
         label: 'MENUITEMS.TABLES.LIST.LISTJS',
         link: '/tables/listjs',
         parentId: 145
+      },
+      {
+        id: 183,
+        label: 'MENUITEMS.TABLES.LIST.DEPARTAMENTO',
+        link: '/tables/departamento',
+        parentId: 145
+      },
+      {
+        id: 184,
+        label: 'MENUITEMS.TABLES.LIST.ZONA',
+        link: '/tables/zona',
+        parentId: 145
       }
     ]
   },

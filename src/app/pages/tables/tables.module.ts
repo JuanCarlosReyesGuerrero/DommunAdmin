@@ -16,13 +16,17 @@ import { ListjsComponent } from './listjs/listjs.component';
 
 // Sorting page
 import { NgbdGridJsSortableHeader } from './../tables/gridjs/gridjs-sortable.directive';
+import { DepartamentoComponent } from './departamento/departamento.component';
+import { ZonaComponent } from './zona/zona.component';
 
 @NgModule({
   declarations: [
     BasicComponent,
     GridjsComponent,
     ListjsComponent,
-    NgbdGridJsSortableHeader
+    NgbdGridJsSortableHeader,
+    DepartamentoComponent,
+    ZonaComponent
   ],
   imports: [
     CommonModule,

@@ -12,7 +12,7 @@ import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { LoginModel } from "src/app/core/models/login-model.class";
 import { LoginService } from "src/app/core/services/login.service";
 import { DommunConstants } from "src/app/common/constants.class";
-import { NotifyService } from "src/app/core/services/notify.service";
+import { ToastService } from "src/app/pages/ui/notifications/toast-service";
 
 @Component({
   selector: "app-login",
@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute,
     private modalService: NgbModal,
     private loginService: LoginService,
-    private notifyService : NotifyService
+    public toastService: ToastService
   ) {
     // redirect to home if already logged in
     if (this.authenticationService.currentUserValue) {
@@ -86,50 +86,48 @@ export class LoginComponent implements OnInit {
     this.modalService.dismissAll();
   }
 
-  onSubmit() {
+  onSubmit6() {
     this.state = false;
     if (this.loginForm.valid) {
       this.loginModel = this.loginForm.value;
-      this.loginService.LogIn(this.loginModel).subscribe(
-        (data) => {
-          sessionStorage.setItem("Email", this.loginModel.email);
-          localStorage.setItem("session", DommunConstants.TokenHash.key);
-          this.authenticationService.currentUserSubject.next(
-            DommunConstants.TokenHash.apiKey
-          );
-          this.authenticationService.login(true);
+      this.loginService.LogIn(this.loginModel).subscribe((data) => {
+        sessionStorage.setItem("Email", this.loginModel.Email);
+        localStorage.setItem("session", DommunConstants.TokenHash.key);
+        this.authenticationService.currentUserSubject.next(
+          DommunConstants.TokenHash.apiKey
+        );
+        this.authenticationService.login(true);
 
-          if (data.success) {
-            if (data.success === true) {
-              sessionStorage.setItem("Email", this.loginModel.email);
-              localStorage.setItem("session", DommunConstants.TokenHash.key);
-              this.authenticationService.currentUserSubject.next(
-                DommunConstants.TokenHash.apiKey
-              );
-              this.authenticationService.login(true);              
-              this.router.navigate(["/"]);
-            } else {
-              this.loginService.emailBackOffice = this.loginModel.email;
-              this.loginService.passwordBackOffice = this.loginModel.password;
-              this.router.navigate(["/login/cambioclave"]);
-            }
-          }
-        },
-        (data) => {
-          if (data.status === 401) {
-            //this.notifyService.showError("Favor Verificar, Usuario y/o contraseña incorrectos", "No Autorizado")
-  
-            this.state = true;
-            this.authenticationService.login(false);
+        if (data.success) {
+          if (data.success === true) {
+            sessionStorage.setItem("Email", this.loginModel.Email);
+            localStorage.setItem("session", DommunConstants.TokenHash.key);
+            this.authenticationService.currentUserSubject.next(
+              DommunConstants.TokenHash.apiKey
+            );
+            this.authenticationService.login(true);
+
+            localStorage.setItem('token', "fdsfsdfsdsfsdf")
+
+            this.router.navigate(["/"]);
           } else {
-            this.state = true;
-            //this.notifyService.showError("En estos momentos el recurso no está disponible o no hay conexión, Intente más tarde", "Error App")  
+            this.loginService.emailBackOffice = this.loginModel.Email;
+            this.loginService.passwordBackOffice = this.loginModel.PasswordHash;
+            this.router.navigate(["/login/xxxxxx"]);
           }
+        } else {
+          //this.notifyService.showError("Favor Verificar, Usuario y/o contraseña incorrectos", "No Autorizado")
+          this.toastService.show(
+            "Favor Verificar, Usuario y/o contraseña incorrectos",
+            "No Autorizado"
+          );
+          this.state = true;
+          this.authenticationService.login(false);
         }
-      );
+      });
     } else {
       this.state = true;
-      //this.notifyService.showError("Favor diligenciar usuario y contraseña", "Datos obligatorios")      
+      //this.notifyService.showError("Favor diligenciar usuario y contraseña", "Datos obligatorios")
     }
     this.formSubmitAttempt = true;
   }
@@ -139,41 +137,24 @@ export class LoginComponent implements OnInit {
     return this.loginForm.controls;
   }
 
-  onSubmit2() {
-    this.submitted = true;   
-  }
-
-  /*
   onSubmit() {
-    this.submitted = true;   
+    this.submitted = true;
     if (this.loginForm.invalid) {
       return;
     } else {
-      if (environment.defaultauth === "firebase") {
-        this.authenticationService
-          .login(this.f["email"].value, this.f["password"].value)
-          .then((res: any) => {
+      this.authFackservice
+        .login(this.f["email"].value, this.f["password"].value)
+        .pipe(first())
+        .subscribe(
+          (data) => {
             this.router.navigate(["/"]);
-          })
-          .catch((error) => {
+          },
+          (error) => {
             this.error = error ? error : "";
-          });
-      } else {
-        this.authFackservice
-          .login(this.f["email"].value, this.f["password"].value)
-          .pipe(first())
-          .subscribe(
-            (data) => {
-              this.router.navigate(["/"]);
-            },
-            (error) => {
-              this.error = error ? error : "";
-            }
-          );
-      }
+          }
+        );
     }
   }
-  */
 
   /**
    * Password Hide/Show

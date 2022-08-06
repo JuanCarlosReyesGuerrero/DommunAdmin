@@ -5,7 +5,8 @@ export class DommunConstants {
   };
 
   static readonly pathApi = {
+    vGetTokenLogin :'https://dommunbackendapi.azurewebsites.net/api/token/',
     vGetToken: 'https://dommunbackendapi.azurewebsites.net/api/AuthToken/',
-    vLogIn: 'https://dommunbackendapi.azurewebsites.net/api/BackOffice/validaLogin',
+    vLogIn: 'https://dommunbackendapi.azurewebsites.net/api/BackOffice/inicioSesion',
   }
 }

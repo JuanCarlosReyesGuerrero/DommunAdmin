@@ -17,7 +17,7 @@
         "ECOMMERCE": "Comercio electrónico",
         "CRYPTO": "Cripto",
         "PROJECTS": "Proyectos",
-        "NFT": "NFT"
+        "NFT": "NFT"        
       }
     },
     "APPS": {
@@ -76,7 +76,7 @@
         "WALLETCONNECT": "Monedero Conectar",
         "CREATENFT": "Crear NFT"
       }
-    },
+    },    
     "LAYOUTS": {
       "TEXT": "Diseños",
       "LIST": {
@@ -207,7 +207,9 @@
         "BASICTABLES": "Tablas Básicas",
         "GRIDJS": "Cuadrícula J",
         "LISTJS": "Lista J",
-        "DATATABLES": "tablas de datos"
+        "DATATABLES": "tablas de datos",
+        "DEPARTAMENTO": "Departamentos",
+        "ZONA": "Zonas"
       }
     },
     "CHARTS": {

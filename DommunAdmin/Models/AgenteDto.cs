@@ -1,9 +1,15 @@
-﻿namespace DommunAdmin.Models
+﻿using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
+
+namespace DommunAdmin.Models
 {
     public class AgenteDto
-    {        
+    {
+        [HiddenInput]
         public int id { get; set; }
         public string? slug { get; set; }
+
+        [Display(Name = "Nombres")]
         public string? nombres { get; set; }
         public string? apellidos { get; set; }
         public string? email { get; set; }

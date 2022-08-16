@@ -6,17 +6,12 @@
 
 <h1>Create</h1>
 
-<h4>AgenteDto</h4>
+
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="id" class="control-label"></label>
-                <input asp-for="id" class="form-control" />
-                <span asp-validation-for="id" class="text-danger"></span>
-            </div>
             <div class="form-group">
                 <label asp-for="slug" class="control-label"></label>
                 <input asp-for="slug" class="form-control" />
@@ -76,31 +71,13 @@
                 <label asp-for="website" class="control-label"></label>
                 <input asp-for="website" class="form-control" />
                 <span asp-validation-for="website" class="text-danger"></span>
-            </div>
+            </div>           
             <div class="form-group">
                 <label asp-for="inmobiliariaId" class="control-label"></label>
-                <input asp-for="inmobiliariaId" class="form-control" />
+                <select asp-for="inmobiliariaId" class="form-control" asp-items="ViewBag.Inmobiliaria">
+                    <option value="0">Seleccione...</option>
+                </select>
                 <span asp-validation-for="inmobiliariaId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="createdDate" class="control-label"></label>
-                <input asp-for="createdDate" class="form-control" />
-                <span asp-validation-for="createdDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="modifiedDate" class="control-label"></label>
-                <input asp-for="modifiedDate" class="form-control" />
-                <span asp-validation-for="modifiedDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="createUser" class="control-label"></label>
-                <input asp-for="createUser" class="form-control" />
-                <span asp-validation-for="createUser" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="modifiedUser" class="control-label"></label>
-                <input asp-for="modifiedUser" class="form-control" />
-                <span asp-validation-for="modifiedUser" class="text-danger"></span>
             </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
@@ -119,5 +96,8 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }
+

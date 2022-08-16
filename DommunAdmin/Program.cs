@@ -8,6 +8,7 @@ builder.Services.AddControllersWithViews();
 
 //builder.Services.AddScoped<IServiceApi, ServiceApi>();
 builder.Services.AddScoped<IAgenteService, AgenteService>();
+builder.Services.AddScoped<IInmobiliariaService, InmobiliariaService>();
 builder.Services.AddScoped<IAutenticarService, AutenticarService>();
 
 

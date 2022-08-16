@@ -3,6 +3,6 @@
     public interface IAutenticarService
     {
         Task<string> GetToken();
-        string GetBaseUrl();
+        Task<string> GetBaseUrl();
     }
 }

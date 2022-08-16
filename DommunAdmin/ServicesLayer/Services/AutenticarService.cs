@@ -45,10 +45,9 @@ namespace DommunAdmin.ServicesLayer.Services
             return _token;
         }
 
-        public string GetBaseUrl()
+        public async Task<string> GetBaseUrl()
         {
             string? _baseUrl;
-
 
             var builder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json").Build();
 

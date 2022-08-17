@@ -79,9 +79,13 @@ namespace DommunAdmin.Controllers
             }
         }
 
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
-            return View();
+            AgenteDto model = new AgenteDto();
+
+            model = await agenteService.GetAgenteById(id);
+
+            return View(model);
         }
 
         [HttpPost]

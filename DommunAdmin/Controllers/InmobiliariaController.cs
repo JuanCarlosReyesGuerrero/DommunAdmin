@@ -1,7 +1,6 @@
 ﻿using DommunAdmin.Commons;
 using DommunAdmin.Models;
 using DommunAdmin.ServicesLayer.Interfaces;
-using DommunAdmin.ServicesLayer.Services;
 using Microsoft.AspNetCore.Mvc;
 using static DommunAdmin.Commons.Enums;
 
@@ -10,10 +9,12 @@ namespace DommunAdmin.Controllers
     public class InmobiliariaController : Controller
     {
         private readonly IInmobiliariaService inmobiliariaService;
+        private readonly ICommonServices commonServices;
 
-        public InmobiliariaController(IInmobiliariaService _inmobiliariaService)
+        public InmobiliariaController(IInmobiliariaService _inmobiliariaService, ICommonServices _commonServices)
         {
             this.inmobiliariaService = _inmobiliariaService;
+            this.commonServices = _commonServices;
         }
 
         public async Task<ActionResult> Index()
@@ -89,9 +90,9 @@ namespace DommunAdmin.Controllers
 
 
                 if (vTemp)               
-                    TempData["Mensaje"] = CommonServices.ShowAlert(Alerts.Success, Constantes.msGuardado);               
+                    TempData["Mensaje"] = commonServices.ShowAlert(Alerts.Success, Constantes.msGuardado);               
                 else
-                    TempData["Mensaje"] = CommonServices.ShowAlert(Alerts.Danger, Constantes.msNoGuardado);
+                    TempData["Mensaje"] = commonServices.ShowAlert(Alerts.Danger, Constantes.msNoGuardado);
 
                 return RedirectToAction(nameof(Index));
             }

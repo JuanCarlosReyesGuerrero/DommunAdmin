@@ -52,9 +52,16 @@ namespace DommunAdmin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(InmobiliariaDto model)
         {
+            ResultdoApi vTemp = new ResultdoApi();
+
             try
             {
-                var vTemp = inmobiliariaService.InsertInmobiliaria(model);
+                vTemp = await inmobiliariaService.InsertInmobiliaria(model);
+
+                if (vTemp.Success)
+                    TempData["Mensaje"] = commonServices.ShowAlert(Alerts.Success, vTemp.Message);
+                else
+                    TempData["Mensaje"] = commonServices.ShowAlert(Alerts.Danger, vTemp.Message);
 
                 return RedirectToAction(nameof(Index));
             }
@@ -77,7 +84,7 @@ namespace DommunAdmin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit(int? id, InmobiliariaDto model)
         {
-            bool vTemp = false;
+            ResultdoApi vTemp = new ResultdoApi();
 
             try
             {
@@ -89,10 +96,10 @@ namespace DommunAdmin.Controllers
                 }
 
 
-                if (vTemp)               
-                    TempData["Mensaje"] = commonServices.ShowAlert(Alerts.Success, Constantes.msGuardado);               
+                if (vTemp.Success)
+                    TempData["Mensaje"] = commonServices.ShowAlert(Alerts.Success, vTemp.Message);
                 else
-                    TempData["Mensaje"] = commonServices.ShowAlert(Alerts.Danger, Constantes.msNoGuardado);
+                    TempData["Mensaje"] = commonServices.ShowAlert(Alerts.Danger, vTemp.Message);
 
                 return RedirectToAction(nameof(Index));
             }

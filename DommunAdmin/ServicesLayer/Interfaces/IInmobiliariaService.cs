@@ -7,9 +7,9 @@ namespace DommunAdmin.ServicesLayer.Interfaces
     {
         Task<List<InmobiliariaDto>> GetAllInmobiliarias();        
         Task<InmobiliariaDto> GetInmobiliariaById(int? Id);
-        Task<bool> InsertInmobiliaria(InmobiliariaDto objeto);
-        Task<bool> UpdateInmobiliaria(InmobiliariaDto objeto);
-        Task<bool> DeleteInmobiliaria(int? Id);
+        Task<ResultdoApi> InsertInmobiliaria(InmobiliariaDto objeto);
+        Task<ResultdoApi> UpdateInmobiliaria(InmobiliariaDto objeto);
+        Task<ResultdoApi> DeleteInmobiliaria(int? Id);
 
         Task<List<SelectListItem>> GetSelectListItems();
     }

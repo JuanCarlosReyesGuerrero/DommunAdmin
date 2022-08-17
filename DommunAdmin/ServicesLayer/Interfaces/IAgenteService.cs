@@ -6,8 +6,8 @@ namespace DommunAdmin.ServicesLayer.Interfaces
     {
         Task<List<AgenteDto>> GetAllAgentes();
         Task<AgenteDto> GetAgenteById(int? Id);
-        Task<bool> InsertAgente(AgenteDto objeto);
-        Task<bool> UpdateAgente(AgenteDto objeto);
-        Task<bool> DeleteAgente(int? Id);
+        Task<ResultdoApi> InsertAgente(AgenteDto objeto);
+        Task<ResultdoApi> UpdateAgente(AgenteDto objeto);
+        Task<ResultdoApi> DeleteAgente(int? Id);
     }
 }

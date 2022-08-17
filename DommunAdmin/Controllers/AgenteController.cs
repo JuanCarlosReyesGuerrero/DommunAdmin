@@ -2,6 +2,7 @@
 using DommunAdmin.ServicesLayer.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using static DommunAdmin.Commons.Enums;
 
 namespace DommunAdmin.Controllers
 {
@@ -9,16 +10,18 @@ namespace DommunAdmin.Controllers
     {
         private readonly IAgenteService agenteService;
         private readonly IInmobiliariaService inmobiliariaService;
+        private readonly ICommonServices commonServices;
 
-        public AgenteController(IAgenteService _agenteService, IInmobiliariaService _inmobiliariaService)
+        public AgenteController(IAgenteService _agenteService, IInmobiliariaService _inmobiliariaService, ICommonServices _commonServices)
         {
             this.agenteService = _agenteService;
             this.inmobiliariaService = _inmobiliariaService;
+            this.commonServices = _commonServices;
         }
 
         public async Task<ActionResult> Index()
         {
-            List<AgenteDto> list = await agenteService.GetAllAgentes();            
+            List<AgenteDto> list = await agenteService.GetAllAgentes();
 
             return View(list);
         }
@@ -55,10 +58,19 @@ namespace DommunAdmin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<IActionResult> Create(AgenteDto model)
         {
+            ResultdoApi vTemp = new ResultdoApi();
+
             try
             {
+                vTemp = await agenteService.InsertAgente(model);
+
+                if (vTemp.Success)
+                    TempData["Mensaje"] = commonServices.ShowAlert(Alerts.Success, vTemp.Message);
+                else
+                    TempData["Mensaje"] = commonServices.ShowAlert(Alerts.Danger, vTemp.Message);
+
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -74,15 +86,30 @@ namespace DommunAdmin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<ActionResult> Edit(int? id, AgenteDto model)
         {
+            ResultdoApi vTemp = new ResultdoApi();
+
             try
             {
+                AgenteDto Entity = await agenteService.GetAgenteById(id);
+
+                if (Entity != null)
+                {
+                    vTemp = await agenteService.UpdateAgente(model);
+                }
+
+
+                if (vTemp.Success)
+                    TempData["Mensaje"] = commonServices.ShowAlert(Alerts.Success, vTemp.Message);
+                else
+                    TempData["Mensaje"] = commonServices.ShowAlert(Alerts.Danger, vTemp.Message);
+
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
-                return View();
+                return View(model);
             }
         }
 

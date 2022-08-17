@@ -18,9 +18,9 @@ namespace DommunAdmin.ServicesLayer.Services
             this.mapper = _mapper;
         }
 
-        public async Task<bool> DeleteAgente(int? Id)
+        public async Task<ResultdoApi> DeleteAgente(int? Id)
         {
-            bool respuesta = false;
+            ResultdoApi resultado = new ResultdoApi();
 
             var _token = await autenticarService.GetToken();
             var _baseUrl = await autenticarService.GetBaseUrl();
@@ -33,10 +33,11 @@ namespace DommunAdmin.ServicesLayer.Services
 
             if (response.IsSuccessStatusCode)
             {
-                respuesta = true;
+                var json_respuesta = await response.Content.ReadAsStringAsync();
+                resultado = JsonConvert.DeserializeObject<ResultdoApi>(json_respuesta);
             }
 
-            return respuesta;
+            return resultado;
         }
 
         public async Task<AgenteDto> GetAgenteById(int? Id)
@@ -64,9 +65,9 @@ namespace DommunAdmin.ServicesLayer.Services
             return objeto;
         }
 
-        public async Task<bool> InsertAgente(AgenteDto objeto)
+        public async Task<ResultdoApi> InsertAgente(AgenteDto objeto)
         {
-            bool respuesta = false;
+            ResultdoApi resultado = new ResultdoApi();
 
             var _token = await autenticarService.GetToken();
             var _baseUrl = await autenticarService.GetBaseUrl();
@@ -81,10 +82,11 @@ namespace DommunAdmin.ServicesLayer.Services
 
             if (response.IsSuccessStatusCode)
             {
-                respuesta = true;
+                var json_respuesta = await response.Content.ReadAsStringAsync();
+                resultado = JsonConvert.DeserializeObject<ResultdoApi>(json_respuesta);
             }
 
-            return respuesta;
+            return resultado;
         }
 
         public async Task<List<AgenteDto>> GetAllAgentes()
@@ -114,9 +116,9 @@ namespace DommunAdmin.ServicesLayer.Services
             return lista;
         }
 
-        public async Task<bool> UpdateAgente(AgenteDto objeto)
+        public async Task<ResultdoApi> UpdateAgente(AgenteDto objeto)
         {
-            bool respuesta = false;
+            ResultdoApi resultado = new ResultdoApi();
 
             var _token = await autenticarService.GetToken();
             var _baseUrl = await autenticarService.GetBaseUrl();
@@ -131,10 +133,11 @@ namespace DommunAdmin.ServicesLayer.Services
 
             if (response.IsSuccessStatusCode)
             {
-                respuesta = true;
+                var json_respuesta = await response.Content.ReadAsStringAsync();
+                resultado = JsonConvert.DeserializeObject<ResultdoApi>(json_respuesta);
             }
 
-            return respuesta;
+            return resultado;
         }
     }
 }

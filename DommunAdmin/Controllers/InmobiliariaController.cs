@@ -1,6 +1,9 @@
-﻿using DommunAdmin.Models;
+﻿using DommunAdmin.Commons;
+using DommunAdmin.Models;
 using DommunAdmin.ServicesLayer.Interfaces;
+using DommunAdmin.ServicesLayer.Services;
 using Microsoft.AspNetCore.Mvc;
+using static DommunAdmin.Commons.Enums;
 
 namespace DommunAdmin.Controllers
 {
@@ -73,14 +76,22 @@ namespace DommunAdmin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit(int? id, InmobiliariaDto model)
         {
+            bool vTemp = false;
+
             try
             {
                 InmobiliariaDto Entity = await inmobiliariaService.GetInmobiliariaById(id);
 
                 if (Entity != null)
                 {
-                    var vTemp = await inmobiliariaService.UpdateInmobiliaria(model);
+                    vTemp = await inmobiliariaService.UpdateInmobiliaria(model);
                 }
+
+
+                if (vTemp)               
+                    TempData["Mensaje"] = CommonServices.ShowAlert(Alerts.Success, Constantes.msGuardado);               
+                else
+                    TempData["Mensaje"] = CommonServices.ShowAlert(Alerts.Danger, Constantes.msNoGuardado);
 
                 return RedirectToAction(nameof(Index));
             }

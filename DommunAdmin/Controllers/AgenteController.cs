@@ -18,9 +18,7 @@ namespace DommunAdmin.Controllers
 
         public async Task<ActionResult> Index()
         {
-            List<AgenteDto> list = await agenteService.GetAllAgentes();
-
-            ViewData["Message"] = string.Format("Hello {0}.\\nCurrent Date and Time: {1}", "dfgfdgfdgdfdgfdg", DateTime.Now.ToString());
+            List<AgenteDto> list = await agenteService.GetAllAgentes();            
 
             return View(list);
         }

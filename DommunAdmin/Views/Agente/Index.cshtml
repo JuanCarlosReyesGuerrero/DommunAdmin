@@ -15,6 +15,16 @@
         <div class="card">
             <div class="card-header">
                 <h5 class="card-title mb-0">Lista de Registros</h5>
+
+                @if (ViewData["Message"] != null)
+                {
+                    <script type="text/javascript">
+                        window.onload = function () {
+                            alert("@ViewData["Message"]");
+                        };
+                    </script>
+                }
+
             </div>
             <div class="card-body">
                 <table id="alternative-pagination" class="table nowrap dt-responsive align-middle table-hover table-bordered" style="width:100%">

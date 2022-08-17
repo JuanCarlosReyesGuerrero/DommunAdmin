@@ -20,6 +20,8 @@ namespace DommunAdmin.Controllers
         {
             List<AgenteDto> list = await agenteService.GetAllAgentes();
 
+            ViewData["Message"] = string.Format("Hello {0}.\\nCurrent Date and Time: {1}", "dfgfdgfdgdfdgfdg", DateTime.Now.ToString());
+
             return View(list);
         }
 

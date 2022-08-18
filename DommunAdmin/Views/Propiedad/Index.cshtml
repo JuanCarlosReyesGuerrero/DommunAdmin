@@ -1,0 +1,167 @@
+﻿@model IEnumerable<DomainLayer.Dtos.PropiedadDto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Titulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Precio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Localizacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Barrio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dormitorios)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Banos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Garages)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Area)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnioConstruccion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Caracteristicas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Video)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Plano)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoPropiedadId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EstadoPropiedadId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CiudadId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AgenteId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModifiedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreateUser)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModifiedUser)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Precio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Localizacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Barrio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dormitorios)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Banos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Garages)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Area)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnioConstruccion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Caracteristicas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Video)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Plano)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoPropiedadId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EstadoPropiedadId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CiudadId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AgenteId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateUser)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedUser)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

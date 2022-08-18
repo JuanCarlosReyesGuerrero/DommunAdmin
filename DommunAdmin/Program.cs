@@ -11,6 +11,12 @@ builder.Services.AddScoped<IAgenteService, AgenteService>();
 builder.Services.AddScoped<IInmobiliariaService, InmobiliariaService>();
 builder.Services.AddScoped<IAutenticarService, AutenticarService>();
 builder.Services.AddScoped<ICommonServices, CommonServices>();
+builder.Services.AddScoped(typeof(ICiudadService), typeof(CiudadService));
+builder.Services.AddScoped(typeof(IEstadoPropiedadService), typeof(EstadoPropiedadService));
+builder.Services.AddScoped(typeof(IFotografiaService), typeof(FotografiaService));
+builder.Services.AddScoped(typeof(IFotografiaPropiedadService), typeof(FotografiaPropiedadService));
+builder.Services.AddScoped(typeof(IPropiedadService), typeof(PropiedadService));
+builder.Services.AddScoped(typeof(ITipoPropiedadService), typeof(TipoPropiedadService));
 
 
 

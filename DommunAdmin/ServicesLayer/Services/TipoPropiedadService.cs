@@ -102,7 +102,7 @@ namespace DommunAdmin.ServicesLayer.Services
             cliente.BaseAddress = new Uri(_baseUrl);
             cliente.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token);
 
-            var response = await cliente.GetAsync("api/TipoPropiedad/GetAllTipoPropiedads");
+            var response = await cliente.GetAsync("api/TipoPropiedad/GetAllTipoPropiedades");
 
             if (response.IsSuccessStatusCode)
             {

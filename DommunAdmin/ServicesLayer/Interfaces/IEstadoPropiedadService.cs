@@ -4,7 +4,7 @@ namespace DommunAdmin.ServicesLayer.Interfaces
 {
     public interface IEstadoPropiedadService
     {
-        Task<List<EstadoPropiedadDto>> GetAllEstadoPropiedads();
+        Task<List<EstadoPropiedadDto>> GetAllEstadoPropiedades();
         Task<EstadoPropiedadDto> GetEstadoPropiedadById(int? Id);
         Task<ResultdoApi> InsertEstadoPropiedad(EstadoPropiedadDto objeto);
         Task<ResultdoApi> UpdateEstadoPropiedad(EstadoPropiedadDto objeto);

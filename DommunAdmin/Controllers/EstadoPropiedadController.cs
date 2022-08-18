@@ -18,7 +18,7 @@ namespace DommunAdmin.Controllers
 
         public async Task<ActionResult> Index()
         {
-            List<EstadoPropiedadDto> list = await inmobiliariaService.GetAllEstadoPropiedads();
+            List<EstadoPropiedadDto> list = await inmobiliariaService.GetAllEstadoPropiedades();
 
             return View(list);
         }

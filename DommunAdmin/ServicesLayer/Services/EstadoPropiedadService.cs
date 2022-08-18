@@ -89,7 +89,7 @@ namespace DommunAdmin.ServicesLayer.Services
             return resultado;
         }
 
-        public async Task<List<EstadoPropiedadDto>> GetAllEstadoPropiedads()
+        public async Task<List<EstadoPropiedadDto>> GetAllEstadoPropiedades()
         {
             List<EstadoPropiedadDto> lista = new List<EstadoPropiedadDto>();
 
@@ -102,7 +102,7 @@ namespace DommunAdmin.ServicesLayer.Services
             cliente.BaseAddress = new Uri(_baseUrl);
             cliente.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token);
 
-            var response = await cliente.GetAsync("api/EstadoPropiedad/GetAllEstadoPropiedads");
+            var response = await cliente.GetAsync("api/EstadoPropiedad/GetAllEstadoPropiedades");
 
             if (response.IsSuccessStatusCode)
             {

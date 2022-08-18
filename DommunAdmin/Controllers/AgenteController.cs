@@ -81,6 +81,12 @@ namespace DommunAdmin.Controllers
 
         public async Task<ActionResult> Edit(int id)
         {
+            List<SelectListItem> listInmobiliaria = new List<SelectListItem>();
+
+            listInmobiliaria = await inmobiliariaService.GetSelectListItems();
+
+            ViewBag.Inmobiliaria = listInmobiliaria;
+
             AgenteDto model = new AgenteDto();
 
             model = await agenteService.GetAgenteById(id);

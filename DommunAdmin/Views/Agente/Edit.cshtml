@@ -11,7 +11,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header align-items-center d-flex">
-                <h4 class="card-title mb-0 flex-grow-1">Agentes</h4>
+                <h4 class="card-title mb-0 flex-grow-1">Agente</h4>
             </div>
             <div class="card-body">
                 <div class="live-preview">
@@ -44,14 +44,14 @@
                             <span asp-validation-for="fotoPerfil" class="text-danger"></span>
                         </div>
                         <div class="col-md-4">
-                            <label asp-for="descripcionPerfil" class="control-label"></label>
-                            <input asp-for="descripcionPerfil" class="form-control" />
-                            <span asp-validation-for="descripcionPerfil" class="text-danger"></span>
-                        </div>
-                        <div class="col-md-4">
                             <label asp-for="celular" class="control-label"></label>
                             <input asp-for="celular" class="form-control" />
                             <span asp-validation-for="celular" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-12">
+                            <label asp-for="descripcionPerfil" class="control-label"></label>
+                            <textarea asp-for="descripcionPerfil" class="form-control" rows="5" cols="40"></textarea>
+                            <span asp-validation-for="descripcionPerfil" class="text-danger"></span>
                         </div>
                         <div class="col-md-4">
                             <label asp-for="facebook" class="control-label"></label>
@@ -80,13 +80,17 @@
                         </div>
                         <div class="col-md-4">
                             <label asp-for="inmobiliariaId" class="control-label"></label>
-                            <input asp-for="inmobiliariaId" class="form-control" />
+                            <select asp-for="inmobiliariaId" class="form-select mb-3" asp-items="ViewBag.Inmobiliaria">
+                                <option value="0">Seleccione...</option>
+                            </select>
                             <span asp-validation-for="inmobiliariaId" class="text-danger"></span>
                         </div>
-                        <div class="form-group form-check">
-                            <label class="form-check-label">
-                                <input class="form-check-input" asp-for="isActive" /> @Html.DisplayNameFor(model => model.isActive)
-                            </label>
+                        <div class="col-12">
+                            <div class="form-group form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" asp-for="isActive" /> @Html.DisplayNameFor(model => model.isActive)
+                                </label>
+                            </div>
                         </div>
                         <div class="col-12">
                             <input type="submit" value="Save" class="btn btn-primary" />

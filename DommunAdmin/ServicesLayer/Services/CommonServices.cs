@@ -33,7 +33,8 @@ namespace DommunAdmin.ServicesLayer.Services
 
         public string ShowAlert(Alerts obj, string message)
         {
-            string alertDiv = null;
+            string alertDiv = string.Empty;
+
             switch (obj)
             {
                 case Alerts.Success:

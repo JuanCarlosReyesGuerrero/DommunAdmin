@@ -1,4 +1,4 @@
-﻿namespace DomainLayer.Dtos
+﻿namespace DommunAdmin.Models
 {
     public class AuthResponseDto
     {

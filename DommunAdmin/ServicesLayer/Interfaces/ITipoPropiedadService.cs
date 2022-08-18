@@ -1,5 +1,4 @@
-﻿using DomainLayer.Dtos;
-using DommunAdmin.Models;
+﻿using DommunAdmin.Models;
 
 namespace DommunAdmin.ServicesLayer.Interfaces
 {

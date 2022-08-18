@@ -1,5 +1,4 @@
-﻿using DomainLayer.Dtos;
-using DommunAdmin.Models;
+﻿using DommunAdmin.Models;
 using DommunAdmin.ServicesLayer.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using static DommunAdmin.Commons.Enums;

@@ -1,20 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 
-namespace DomainLayer.Dtos
+namespace DommunAdmin.Models
 {
     public class CiudadDto
     {
         [HiddenInput]
-        public int Id { get; set; }
-        public string? Codigo { get; set; }
-        public string? Nombre { get; set; }
-        public DateTime CreatedDate { get; set; }
-        public DateTime ModifiedDate { get; set; }
-        public string? CreateUser { get; set; }
-        public string? ModifiedUser { get; set; }
+        public int id { get; set; }
+        public string? codigo { get; set; }
+        public string? nombre { get; set; }
+        public DateTime createdDate { get; set; }
+        public DateTime modifiedDate { get; set; }
+        public string? createUser { get; set; }
+        public string? modifiedUser { get; set; }
 
         [Display(Name = "Activo")]
-        public bool IsActive { get; set; }
+        public bool isActive { get; set; }
     }
 }

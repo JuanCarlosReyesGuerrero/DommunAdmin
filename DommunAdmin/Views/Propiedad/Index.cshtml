@@ -1,4 +1,4 @@
-﻿@model IEnumerable<DomainLayer.Dtos.PropiedadDto>
+﻿@model IEnumerable<DommunAdmin.Models.PropiedadDto>
 
 @{
     ViewData["Title"] = "Index";
@@ -11,150 +11,60 @@
 </p>
 <table class="table">
     <thead>
-        <tr>
+        <tr>           
             <th>
-                @Html.DisplayNameFor(model => model.Id)
+                @Html.DisplayNameFor(model => model.titulo)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Titulo)
+                @Html.DisplayNameFor(model => model.descripcion)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Descripcion)
+                @Html.DisplayNameFor(model => model.precio)
+            </th>           
+            <th>
+                @Html.DisplayNameFor(model => model.tipoPropiedadId)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Precio)
+                @Html.DisplayNameFor(model => model.estadoPropiedadId)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Localizacion)
+                @Html.DisplayNameFor(model => model.ciudadId)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Barrio)
-            </th>
+                @Html.DisplayNameFor(model => model.agenteId)
+            </th>      
             <th>
-                @Html.DisplayNameFor(model => model.Dormitorios)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Banos)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Garages)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Area)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AnioConstruccion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Caracteristicas)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Video)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Plano)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TipoPropiedadId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EstadoPropiedadId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CiudadId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AgenteId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreatedDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ModifiedDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreateUser)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ModifiedUser)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsActive)
+                @Html.DisplayNameFor(model => model.isActive)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
+        <tr>           
             <td>
-                @Html.DisplayFor(modelItem => item.Id)
+                @Html.DisplayFor(modelItem => item.titulo)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Titulo)
+                @Html.DisplayFor(modelItem => item.descripcion)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Descripcion)
+                @Html.DisplayFor(modelItem => item.precio)
+            </td>           
+            <td>
+                @Html.DisplayFor(modelItem => item.tipoPropiedadId)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Precio)
+                @Html.DisplayFor(modelItem => item.estadoPropiedadId)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Localizacion)
+                @Html.DisplayFor(modelItem => item.ciudadId)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Barrio)
-            </td>
+                @Html.DisplayFor(modelItem => item.agenteId)
+            </td>     
             <td>
-                @Html.DisplayFor(modelItem => item.Dormitorios)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Banos)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Garages)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Area)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AnioConstruccion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Caracteristicas)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Video)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Plano)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TipoPropiedadId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EstadoPropiedadId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CiudadId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AgenteId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ModifiedDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreateUser)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ModifiedUser)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsActive)
+                @Html.DisplayFor(modelItem => item.isActive)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |

@@ -1,20 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 
-namespace DomainLayer.Dtos
+namespace DommunAdmin.Models
 {
     public class FotografiaPropiedadDto
     {
         [HiddenInput]
-        public int Id { get; set; }
-        public int FotografiaId { get; set; }
-        public bool PropiedadId { get; set; }
-        public DateTime CreatedDate { get; set; }
-        public DateTime ModifiedDate { get; set; }
-        public string? CreateUser { get; set; }
-        public string? ModifiedUser { get; set; }
+        public int id { get; set; }
+        public int fotografiaId { get; set; }
+        public bool propiedadId { get; set; }
+        public DateTime createdDate { get; set; }
+        public DateTime modifiedDate { get; set; }
+        public string? createUser { get; set; }
+        public string? modifiedUser { get; set; }
 
         [Display(Name = "Activo")]
-        public bool IsActive { get; set; }
+        public bool isActive { get; set; }
     }
 }

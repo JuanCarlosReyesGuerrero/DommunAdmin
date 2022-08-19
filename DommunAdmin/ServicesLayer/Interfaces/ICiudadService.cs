@@ -4,7 +4,7 @@ namespace DommunAdmin.ServicesLayer.Interfaces
 {
     public interface ICiudadService
     {
-        Task<List<CiudadDto>> GetAllCiudads();
+        Task<List<CiudadDto>> GetAllCiudades();
         Task<CiudadDto> GetCiudadById(int? Id);
         Task<ResultdoApi> InsertCiudad(CiudadDto objeto);
         Task<ResultdoApi> UpdateCiudad(CiudadDto objeto);

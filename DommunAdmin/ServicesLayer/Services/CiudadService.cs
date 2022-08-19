@@ -89,7 +89,7 @@ namespace DommunAdmin.ServicesLayer.Services
             return resultado;
         }
 
-        public async Task<List<CiudadDto>> GetAllCiudads()
+        public async Task<List<CiudadDto>> GetAllCiudades()
         {
             List<CiudadDto> lista = new List<CiudadDto>();
 
@@ -102,7 +102,7 @@ namespace DommunAdmin.ServicesLayer.Services
             cliente.BaseAddress = new Uri(_baseUrl);
             cliente.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token);
 
-            var response = await cliente.GetAsync("api/Ciudad/GetAllCiudads");
+            var response = await cliente.GetAsync("api/Ciudad/GetAllCiudades");
 
             if (response.IsSuccessStatusCode)
             {

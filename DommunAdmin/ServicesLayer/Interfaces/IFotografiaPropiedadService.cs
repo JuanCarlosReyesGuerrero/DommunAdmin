@@ -6,8 +6,8 @@ namespace DommunAdmin.ServicesLayer.Interfaces
     {
         Task<List<FotografiaPropiedadDto>> GetAllFotografiaPropiedades();
         Task<FotografiaPropiedadDto> GetFotografiaPropiedadById(int? Id);
-        Task<ResultdoApi> InsertFotografiaPropiedad(FotografiaPropiedadDto objeto);
-        Task<ResultdoApi> UpdateFotografiaPropiedad(FotografiaPropiedadDto objeto);
-        Task<ResultdoApi> DeleteFotografiaPropiedad(int? Id);
+        Task<ResultadoApi> InsertFotografiaPropiedad(FotografiaPropiedadDto objeto);
+        Task<ResultadoApi> UpdateFotografiaPropiedad(FotografiaPropiedadDto objeto);
+        Task<ResultadoApi> DeleteFotografiaPropiedad(int? Id);
     }
 }

@@ -6,8 +6,8 @@ namespace DommunAdmin.ServicesLayer.Interfaces
     {
         Task<List<CiudadDto>> GetAllCiudades();
         Task<CiudadDto> GetCiudadById(int? Id);
-        Task<ResultdoApi> InsertCiudad(CiudadDto objeto);
-        Task<ResultdoApi> UpdateCiudad(CiudadDto objeto);
-        Task<ResultdoApi> DeleteCiudad(int? Id);
+        Task<ResultadoApi> InsertCiudad(CiudadDto objeto);
+        Task<ResultadoApi> UpdateCiudad(CiudadDto objeto);
+        Task<ResultadoApi> DeleteCiudad(int? Id);
     }
 }

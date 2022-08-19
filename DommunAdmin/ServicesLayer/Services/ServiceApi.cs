@@ -83,7 +83,7 @@ namespace DommunAdmin.ServicesLayer.Services
             if (response.IsSuccessStatusCode)
             {
                 var json_respuesta = await response.Content.ReadAsStringAsync();
-                var resultado = JsonConvert.DeserializeObject<ResultdoApi>(json_respuesta);
+                var resultado = JsonConvert.DeserializeObject<ResultadoApi>(json_respuesta);
 
                 if (resultado.Data.ToString() != "[]" && resultado.Data != null)
                     objeto = mapper.Map<AgenteDto>(resultado.Data);               
@@ -118,7 +118,7 @@ namespace DommunAdmin.ServicesLayer.Services
         {
             List<AgenteDto> lista = new List<AgenteDto>();
 
-            ResultdoApi resultado = new ResultdoApi();
+            ResultadoApi resultado = new ResultadoApi();
 
             await Autenticar();
 
@@ -131,7 +131,7 @@ namespace DommunAdmin.ServicesLayer.Services
             if (response.IsSuccessStatusCode)
             {
                 var json_respuesta = await response.Content.ReadAsStringAsync();
-                resultado = JsonConvert.DeserializeObject<ResultdoApi>(json_respuesta);
+                resultado = JsonConvert.DeserializeObject<ResultadoApi>(json_respuesta);
 
                 if (resultado.Data.ToString() != "[]" && resultado.Data != null)
                     lista = mapper.Map<List<AgenteDto>>(resultado.Data);

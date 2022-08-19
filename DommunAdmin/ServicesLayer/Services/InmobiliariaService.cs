@@ -20,9 +20,9 @@ namespace DommunAdmin.ServicesLayer.Services
             this.mapper = _mapper;
         }
 
-        public async Task<ResultdoApi> DeleteInmobiliaria(int? Id)
+        public async Task<ResultadoApi> DeleteInmobiliaria(int? Id)
         {
-            ResultdoApi resultado = new ResultdoApi();
+            ResultadoApi resultado = new ResultadoApi();
 
             var _token = await autenticarService.GetToken();
             var _baseUrl = await autenticarService.GetBaseUrl();
@@ -36,7 +36,7 @@ namespace DommunAdmin.ServicesLayer.Services
             if (response.IsSuccessStatusCode)
             {
                 var json_respuesta = await response.Content.ReadAsStringAsync();
-                resultado = JsonConvert.DeserializeObject<ResultdoApi>(json_respuesta);
+                resultado = JsonConvert.DeserializeObject<ResultadoApi>(json_respuesta);
             }
 
             return resultado;
@@ -58,7 +58,7 @@ namespace DommunAdmin.ServicesLayer.Services
             if (response.IsSuccessStatusCode)
             {
                 var json_respuesta = await response.Content.ReadAsStringAsync();
-                var resultado = JsonConvert.DeserializeObject<ResultdoApi>(json_respuesta);
+                var resultado = JsonConvert.DeserializeObject<ResultadoApi>(json_respuesta);
 
                 if (resultado.Data.ToString() != "[]" && resultado.Data != null)
                     objeto = mapper.Map<InmobiliariaDto>(resultado.Data);
@@ -67,9 +67,9 @@ namespace DommunAdmin.ServicesLayer.Services
             return objeto;
         }
 
-        public async Task<ResultdoApi> InsertInmobiliaria(InmobiliariaDto objeto)
+        public async Task<ResultadoApi> InsertInmobiliaria(InmobiliariaDto objeto)
         {
-            ResultdoApi resultado = new ResultdoApi();
+            ResultadoApi resultado = new ResultadoApi();
 
             var _token = await autenticarService.GetToken();
             var _baseUrl = await autenticarService.GetBaseUrl();
@@ -85,7 +85,7 @@ namespace DommunAdmin.ServicesLayer.Services
             if (response.IsSuccessStatusCode)
             {
                 var json_respuesta = await response.Content.ReadAsStringAsync();
-                resultado = JsonConvert.DeserializeObject<ResultdoApi>(json_respuesta);
+                resultado = JsonConvert.DeserializeObject<ResultadoApi>(json_respuesta);
             }
 
             return resultado;
@@ -95,7 +95,7 @@ namespace DommunAdmin.ServicesLayer.Services
         {
             List<InmobiliariaDto> lista = new List<InmobiliariaDto>();
 
-            ResultdoApi resultado = new ResultdoApi();
+            ResultadoApi resultado = new ResultadoApi();
 
             var _token = await autenticarService.GetToken();
             var _baseUrl = await autenticarService.GetBaseUrl();
@@ -109,7 +109,7 @@ namespace DommunAdmin.ServicesLayer.Services
             if (response.IsSuccessStatusCode)
             {
                 var json_respuesta = await response.Content.ReadAsStringAsync();
-                resultado = JsonConvert.DeserializeObject<ResultdoApi>(json_respuesta);
+                resultado = JsonConvert.DeserializeObject<ResultadoApi>(json_respuesta);
 
                 if (resultado.Data.ToString() != "[]" && resultado.Data != null)
                     lista = mapper.Map<List<InmobiliariaDto>>(resultado.Data);
@@ -118,9 +118,9 @@ namespace DommunAdmin.ServicesLayer.Services
             return lista;
         }
 
-        public async Task<ResultdoApi> UpdateInmobiliaria(InmobiliariaDto objeto)
+        public async Task<ResultadoApi> UpdateInmobiliaria(InmobiliariaDto objeto)
         {
-            ResultdoApi resultado = new ResultdoApi();
+            ResultadoApi resultado = new ResultadoApi();
 
             var _token = await autenticarService.GetToken();
             var _baseUrl = await autenticarService.GetBaseUrl();
@@ -136,7 +136,7 @@ namespace DommunAdmin.ServicesLayer.Services
             if (response.IsSuccessStatusCode)
             {
                 var json_respuesta = await response.Content.ReadAsStringAsync();
-                resultado = JsonConvert.DeserializeObject<ResultdoApi>(json_respuesta);
+                resultado = JsonConvert.DeserializeObject<ResultadoApi>(json_respuesta);
             }
 
             return resultado;

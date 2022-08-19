@@ -6,8 +6,8 @@ namespace DommunAdmin.ServicesLayer.Interfaces
     {
         Task<List<TipoPropiedadDto>> GetAllTipoPropiedades();
         Task<TipoPropiedadDto> GetTipoPropiedadById(int? Id);
-        Task<ResultdoApi> InsertTipoPropiedad(TipoPropiedadDto objeto);
-        Task<ResultdoApi> UpdateTipoPropiedad(TipoPropiedadDto objeto);
-        Task<ResultdoApi> DeleteTipoPropiedad(int? Id);
+        Task<ResultadoApi> InsertTipoPropiedad(TipoPropiedadDto objeto);
+        Task<ResultadoApi> UpdateTipoPropiedad(TipoPropiedadDto objeto);
+        Task<ResultadoApi> DeleteTipoPropiedad(int? Id);
     }
 }

@@ -7,7 +7,11 @@ namespace DommunAdmin.Models
     {
         [HiddenInput]
         public int id { get; set; }
+
+        [Display(Name = "Código")]
         public string? codigo { get; set; }
+
+        [Display(Name = "Nombre")]
         public string? nombre { get; set; }
         public DateTime createdDate { get; set; }
         public DateTime modifiedDate { get; set; }

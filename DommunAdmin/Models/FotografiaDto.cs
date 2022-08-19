@@ -7,8 +7,14 @@ namespace DommunAdmin.Models
     {
         [HiddenInput]
         public int id { get; set; }
+
+        [Display(Name = "Fotografía")]
         public string? imagen { get; set; }
+
+        [Display(Name = "Es Válida")]
         public bool valida { get; set; }
+
+        [Display(Name = "Es principal")]
         public bool esPrincipal { get; set; }
         public DateTime createdDate { get; set; }
         public DateTime modifiedDate { get; set; }

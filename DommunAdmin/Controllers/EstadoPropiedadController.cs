@@ -51,7 +51,7 @@ namespace DommunAdmin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(EstadoPropiedadDto model)
         {
-            ResultdoApi vTemp = new ResultdoApi();
+            ResultadoApi vTemp = new ResultadoApi();
 
             try
             {
@@ -83,7 +83,7 @@ namespace DommunAdmin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit(int? id, EstadoPropiedadDto model)
         {
-            ResultdoApi vTemp = new ResultdoApi();
+            ResultadoApi vTemp = new ResultadoApi();
 
             try
             {

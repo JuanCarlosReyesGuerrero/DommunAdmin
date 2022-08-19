@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using DommunAdmin.Models;
 using DommunAdmin.ServicesLayer.Interfaces;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
 using System.Text;
@@ -138,6 +139,27 @@ namespace DommunAdmin.ServicesLayer.Services
             }
 
             return resultado;
+        }
+
+        public async Task<List<SelectListItem>> GetSelectListItems()
+        {
+            var selectList = new List<SelectListItem>();
+
+            List<TipoPropiedadDto> elements = new List<TipoPropiedadDto>();
+
+            elements = await GetAllTipoPropiedades();
+
+            foreach (var element in elements)
+            {
+                if (element.isActive == true)
+                    selectList.Add(new SelectListItem
+                    {
+                        Value = element.id.ToString(),
+                        Text = element.nombre
+                    });
+            }
+
+            return selectList;
         }
     }
 }

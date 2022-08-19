@@ -1,4 +1,5 @@
 ﻿using DommunAdmin.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace DommunAdmin.ServicesLayer.Interfaces
 {
@@ -9,5 +10,7 @@ namespace DommunAdmin.ServicesLayer.Interfaces
         Task<ResultadoApi> InsertCiudad(CiudadDto objeto);
         Task<ResultadoApi> UpdateCiudad(CiudadDto objeto);
         Task<ResultadoApi> DeleteCiudad(int? Id);
+
+        Task<List<SelectListItem>> GetSelectListItems();
     }
 }

@@ -1,6 +1,7 @@
 ﻿using DommunAdmin.Models;
 using DommunAdmin.ServicesLayer.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using static DommunAdmin.Commons.Enums;
 
 namespace DommunAdmin.Controllers
@@ -9,11 +10,25 @@ namespace DommunAdmin.Controllers
     {
         private readonly IPropiedadService inmobiliariaService;
         private readonly ICommonServices commonServices;
+        private readonly ICiudadService ciudadService;
+        private readonly IEstadoPropiedadService estadoPropiedadService;
+        private readonly IAgenteService agenteService;
+        private readonly ITipoPropiedadService tipoPropiedadService;
 
-        public PropiedadController(IPropiedadService _inmobiliariaService, ICommonServices _commonServices)
+        public PropiedadController(
+            IPropiedadService _inmobiliariaService,
+            ICommonServices _commonServices,
+            IAgenteService _agenteService,
+            ITipoPropiedadService _tipoPropiedadService,
+            ICiudadService _ciudadService,
+            IEstadoPropiedadService _estadoPropiedadService)
         {
             this.inmobiliariaService = _inmobiliariaService;
             this.commonServices = _commonServices;
+            this.agenteService = _agenteService;
+            this.tipoPropiedadService = _tipoPropiedadService;
+            this.ciudadService = _ciudadService;
+            this.estadoPropiedadService = _estadoPropiedadService;
         }
 
         public async Task<ActionResult> Index()
@@ -40,8 +55,37 @@ namespace DommunAdmin.Controllers
             return View(model);
         }
 
-        public ActionResult Create()
+        public async Task<ActionResult> CreateAsync()
         {
+            List<SelectListItem> listAgente = new List<SelectListItem>();
+
+            listAgente = await agenteService.GetSelectListItems();
+
+            ViewBag.Agente = listAgente;
+
+
+            List<SelectListItem> listTipoPropiedad = new List<SelectListItem>();
+
+            listTipoPropiedad = await tipoPropiedadService.GetSelectListItems();
+
+            ViewBag.TipoPropiedad = listTipoPropiedad;
+
+
+            List<SelectListItem> listCiudad = new List<SelectListItem>();
+
+            listCiudad = await ciudadService.GetSelectListItems();
+
+            ViewBag.Ciudad = listCiudad;
+
+
+            List<SelectListItem> listEstadoPropiedad = new List<SelectListItem>();
+
+            listEstadoPropiedad = await estadoPropiedadService.GetSelectListItems();
+
+            ViewBag.EstadoPropiedad = listEstadoPropiedad;
+
+
+
             PropiedadDto model = new PropiedadDto();
 
             return View(model);
@@ -72,6 +116,34 @@ namespace DommunAdmin.Controllers
 
         public async Task<ActionResult> Edit(int id)
         {
+            List<SelectListItem> listAgente = new List<SelectListItem>();
+
+            listAgente = await agenteService.GetSelectListItems();
+
+            ViewBag.Agente = listAgente;
+
+
+            List<SelectListItem> listTipoPropiedad = new List<SelectListItem>();
+
+            listTipoPropiedad = await tipoPropiedadService.GetSelectListItems();
+
+            ViewBag.TipoPropiedad = listTipoPropiedad;
+
+
+            List<SelectListItem> listCiudad = new List<SelectListItem>();
+
+            listCiudad = await ciudadService.GetSelectListItems();
+
+            ViewBag.Ciudad = listCiudad;
+
+
+            List<SelectListItem> listEstadoPropiedad = new List<SelectListItem>();
+
+            listEstadoPropiedad = await estadoPropiedadService.GetSelectListItems();
+
+            ViewBag.EstadoPropiedad = listEstadoPropiedad;
+
+
             PropiedadDto model = new PropiedadDto();
 
             model = await inmobiliariaService.GetPropiedadById(id);

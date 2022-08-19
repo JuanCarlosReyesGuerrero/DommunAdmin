@@ -152,11 +152,12 @@ namespace DommunAdmin.ServicesLayer.Services
 
             foreach (var element in elements)
             {
-                selectList.Add(new SelectListItem
-                {
-                    Value = element.id.ToString(),
-                    Text = element.nombre
-                });
+                if (element.isActive == true)
+                    selectList.Add(new SelectListItem
+                    {
+                        Value = element.id.ToString(),
+                        Text = element.nombre
+                    });
             }
 
             return selectList;

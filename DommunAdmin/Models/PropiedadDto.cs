@@ -93,55 +93,9 @@ namespace DommunAdmin.Models
         [Display(Name = "Activo")]
         public bool isActive { get; set; }
 
-
-
-        //[HiddenInput]
-        //public int id { get; set; }
-        //public int? tipoOfertaId { get; set; }
-        //public int? tipoPropiedadId { get; set; }
-        //public double? valorVenta { get; set; }
-        //public double? valorArriendo { get; set; }
-        //public bool incluyeAdministracion { get; set; }
-        //public double? valorAdministracion { get; set; }
-        //public double? valorMetro { get; set; }
-
-        //public int? ciudadId { get; set; }
-        //public string? direccion { get; set; }
-        //public string? barrio { get; set; }
-        //public string? localizacion { get; set; }
-
-        //public int? estratoId { get; set; }
-        //public decimal areaPrivada { get; set; }
-        //public decimal areaConstruida { get; set; }
-
-        //public int? numeroPiso { get; set; }
-        //public decimal areaFondo { get; set; }
-        //public int? tiempoConstruidoId { get; set; }
-        //public int? numeroHabitacionId { get; set; }
-        //public int? numeroBanoId { get; set; }
-        //public int? numeroParqueaderoId { get; set; }
-        //public int? tipoParqueaderoId { get; set; }
-        //public int? caracteristicaParqueaderoId { get; set; }
-
-
-        //public string? caracteristicas { get; set; }
-
-
-        //public string? video { get; set; }
-        //public string? descripcion { get; set; }
-        //public int anioConstruccion { get; set; }
-        //public int? estadoPropiedadId { get; set; }
-
-
-        //public int? agenteId { get; set; }
-
-
-        //public DateTime CreatedDate { get; set; }
-        //public DateTime ModifiedDate { get; set; }
-        //public string? CreateUser { get; set; }
-        //public string? ModifiedUser { get; set; }
-
-        //[Display(Name = "Activo")]
-        //public bool isActive { get; set; }
+        public AgenteDto? agente { get; set; }
+        public CiudadDto? ciudad { get; set; }
+        public TipoOfertaDto? tipoOferta { get; set; }
+        public TipoPropiedadDto? tipoPropiedad { get; set; }
     }
 }

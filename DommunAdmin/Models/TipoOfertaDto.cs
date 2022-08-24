@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DommunAdmin.Models
 {
-    public class CiudadDto
+    public class TipoOfertaDto
     {
         [HiddenInput]
         public int id { get; set; }
@@ -21,7 +21,7 @@ namespace DommunAdmin.Models
         [Display(Name = "Activo")]
         public bool isActive { get; set; }
 
-        [Display(Name = "Ciudad")]
+        [Display(Name = "Tipo Oferta")]
         public string FullName
         {
             get

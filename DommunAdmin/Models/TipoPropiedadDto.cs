@@ -20,5 +20,14 @@ namespace DommunAdmin.Models
 
         [Display(Name = "Activo")]
         public bool isActive { get; set; }
+
+        [Display(Name = "Tipo Propiedad")]
+        public string FullName
+        {
+            get
+            {
+                return nombre;
+            }
+        }
     }
 }

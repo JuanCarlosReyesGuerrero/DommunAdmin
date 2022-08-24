@@ -28,16 +28,16 @@
                             @Html.DisplayNameFor(model => model.precio)
                             </th>*@
                             <th>
-                                @Html.DisplayNameFor(model => model.tipoPropiedadId)
+                                @Html.DisplayNameFor(model => model.tipoOferta.FullName)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.estadoPropiedadId)
+                                @Html.DisplayNameFor(model => model.tipoPropiedad.FullName)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.ciudadId)
+                                @Html.DisplayNameFor(model => model.ciudad.FullName)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.agenteId)
+                                @Html.DisplayNameFor(model => model.agente.FullName)
                             </th>
                             <th>
                                 @Html.DisplayNameFor(model => model.isActive)
@@ -56,16 +56,16 @@
                             @Html.DisplayFor(modelItem => item.precio)
                             </td>*@
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.tipoPropiedadId)
+                                    @Html.DisplayFor(modelItem => item.tipoOferta.FullName)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.estadoPropiedadId)
+                                    @Html.DisplayFor(modelItem => item.tipoPropiedad.FullName)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.ciudadId)
-                                </td>
+                                    @Html.DisplayFor(modelItem => item.ciudad.FullName)
+                                </td>                              
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.agenteId)
+                                    @Html.DisplayFor(modelItem => item.agente.FullName)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.isActive)

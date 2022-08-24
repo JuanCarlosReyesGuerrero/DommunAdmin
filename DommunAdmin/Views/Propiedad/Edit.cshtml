@@ -20,17 +20,17 @@
                     <form class="row g-3" asp-action="Edit">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <input type="hidden" asp-for="id" />
-                      @*  <div class="col-md-4">
-                            <label asp-for="titulo" class="control-label"></label>
-                            <input asp-for="titulo" class="form-control" />
-                            <span asp-validation-for="titulo" class="text-danger"></span>
+                        @*  <div class="col-md-4">
+                        <label asp-for="titulo" class="control-label"></label>
+                        <input asp-for="titulo" class="form-control" />
+                        <span asp-validation-for="titulo" class="text-danger"></span>
                         </div>
                         <div class="col-md-4">
-                            <label asp-for="precio" class="control-label"></label>
-                            <input asp-for="precio" class="form-control" />
-                            <span asp-validation-for="precio" class="text-danger"></span>
+                        <label asp-for="precio" class="control-label"></label>
+                        <input asp-for="precio" class="form-control" />
+                        <span asp-validation-for="precio" class="text-danger"></span>
                         </div>*@
-                      @*  <div class="col-md-4">
+                        *  <div class="col-md-4">
                             <label asp-for="localizacion" class="control-label"></label>
                             <input asp-for="localizacion" class="form-control" />
                             <span asp-validation-for="localizacion" class="text-danger"></span>
@@ -44,28 +44,28 @@
                             <label asp-for="barrio" class="control-label"></label>
                             <input asp-for="barrio" class="form-control" />
                             <span asp-validation-for="barrio" class="text-danger"></span>
+                        </div>
+                        @*  <div class="col-md-4">
+                        <label asp-for="dormitorios" class="control-label"></label>
+                        <input asp-for="dormitorios" class="form-control" />
+                        <span asp-validation-for="dormitorios" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-4">
+                        <label asp-for="banos" class="control-label"></label>
+                        <input asp-for="banos" class="form-control" />
+                        <span asp-validation-for="banos" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-4">
+                        <label asp-for="garages" class="control-label"></label>
+                        <input asp-for="garages" class="form-control" />
+                        <span asp-validation-for="garages" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-4">
+                        <label asp-for="area" class="control-label"></label>
+                        <input asp-for="area" class="form-control" />
+                        <span asp-validation-for="area" class="text-danger"></span>
                         </div>*@
-                      @*  <div class="col-md-4">
-                            <label asp-for="dormitorios" class="control-label"></label>
-                            <input asp-for="dormitorios" class="form-control" />
-                            <span asp-validation-for="dormitorios" class="text-danger"></span>
-                        </div>
                         <div class="col-md-4">
-                            <label asp-for="banos" class="control-label"></label>
-                            <input asp-for="banos" class="form-control" />
-                            <span asp-validation-for="banos" class="text-danger"></span>
-                        </div>
-                        <div class="col-md-4">
-                            <label asp-for="garages" class="control-label"></label>
-                            <input asp-for="garages" class="form-control" />
-                            <span asp-validation-for="garages" class="text-danger"></span>
-                        </div>
-                        <div class="col-md-4">
-                            <label asp-for="area" class="control-label"></label>
-                            <input asp-for="area" class="form-control" />
-                            <span asp-validation-for="area" class="text-danger"></span>
-                        </div>*@
-                      @*  <div class="col-md-4">
                             <label asp-for="anioConstruccion" class="control-label"></label>
                             <input asp-for="anioConstruccion" class="form-control" />
                             <span asp-validation-for="anioConstruccion" class="text-danger"></span>
@@ -79,13 +79,13 @@
                             <label asp-for="video" class="control-label"></label>
                             <input asp-for="video" class="form-control" />
                             <span asp-validation-for="video" class="text-danger"></span>
+                        </div>
+                        @*  <div class="col-md-4">
+                        <label asp-for="plano" class="control-label"></label>
+                        <input asp-for="plano" class="form-control" />
+                        <span asp-validation-for="plano" class="text-danger"></span>
                         </div>*@
-                      @*  <div class="col-md-4">
-                            <label asp-for="plano" class="control-label"></label>
-                            <input asp-for="plano" class="form-control" />
-                            <span asp-validation-for="plano" class="text-danger"></span>
-                        </div>*@
-                     @*   <div class="col-md-4">
+                        <div class="col-md-4">
                             <label asp-for="tipoPropiedadId" class="control-label"></label>
                             <select asp-for="tipoPropiedadId" class="form-select mb-3" asp-items="ViewBag.TipoPropiedadId">
                                 <option value="0">Seleccione...</option>
@@ -112,7 +112,7 @@
                                 <option value="0">Seleccione...</option>
                             </select>
                             <span asp-validation-for="agenteId" class="text-danger"></span>
-                        </div>*@
+                        </div>
                         <div class="col-12">
                             <div class="form-group form-check">
                                 <label class="form-check-label">

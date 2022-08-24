@@ -2,6 +2,7 @@
 using DommunAdmin.Models;
 using DommunAdmin.ServicesLayer.Interfaces;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.Net.Http.Headers;
 using System.Text;
 
@@ -42,6 +43,7 @@ namespace DommunAdmin.ServicesLayer.Services
 
         public async Task<PropiedadDto> GetPropiedadById(int? Id)
         {
+            List<PropiedadDto> lista = new List<PropiedadDto>();
             PropiedadDto objeto = new PropiedadDto();
 
             var _token = await autenticarService.GetToken();
@@ -51,7 +53,8 @@ namespace DommunAdmin.ServicesLayer.Services
             cliente.BaseAddress = new Uri(_baseUrl);
             cliente.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token);
 
-            var response = await cliente.GetAsync($"api/Propiedad/GetPropiedad?Id={Id}");
+            //var response = await cliente.GetAsync($"api/Propiedad/GetPropiedad?Id={Id}");
+            var response = await cliente.GetAsync($"api/Propiedad/GetPropiedadById?Id={Id}");
 
             if (response.IsSuccessStatusCode)
             {
@@ -59,7 +62,9 @@ namespace DommunAdmin.ServicesLayer.Services
                 var resultado = JsonConvert.DeserializeObject<ResultadoApi>(json_respuesta);
 
                 if (resultado.Data.ToString() != "[]" && resultado.Data != null)
-                    objeto = mapper.Map<PropiedadDto>(resultado.Data);
+                    lista = mapper.Map<List<PropiedadDto>>(resultado.Data);
+
+                objeto = (from x in lista select x).First();
             }
 
             return objeto;

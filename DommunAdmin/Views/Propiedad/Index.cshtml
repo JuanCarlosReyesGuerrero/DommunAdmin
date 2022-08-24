@@ -21,12 +21,12 @@
                 <table id="alternative-pagination" class="table nowrap dt-responsive align-middle table-hover table-bordered" style="width:100%">
                     <thead>
                         <tr>
-                            <th>
-                                @Html.DisplayNameFor(model => model.titulo)
-                            </th>                           
-                            <th>
-                                @Html.DisplayNameFor(model => model.precio)
+                            @* <th>
+                            @Html.DisplayNameFor(model => model.titulo)
                             </th>
+                            <th>
+                            @Html.DisplayNameFor(model => model.precio)
+                            </th>*@
                             <th>
                                 @Html.DisplayNameFor(model => model.tipoPropiedadId)
                             </th>
@@ -49,12 +49,12 @@
                         @foreach (var item in Model)
                         {
                             <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.titulo)
-                                </td>                              
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.precio)
-                                </td>
+                                @* <td>
+                            @Html.DisplayFor(modelItem => item.titulo)
+                            </td>
+                            <td>
+                            @Html.DisplayFor(modelItem => item.precio)
+                            </td>*@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.tipoPropiedadId)
                                 </td>

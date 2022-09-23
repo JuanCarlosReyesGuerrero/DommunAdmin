@@ -15,30 +15,60 @@
                 <h5 class="card-title mb-0">Propiedad</h5>
             </div>
             <div class="card-body">
-                <dl class="row">
-                    @* <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.titulo)
-                    </dt>
-                    <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.titulo)
-                    </dd>*@
+                <dl class="row">                   
                     <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.descripcion)
+                        @Html.DisplayNameFor(model => model.tipoOferta.FullName)
                     </dt>
                     <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.descripcion)
+                        @Html.DisplayFor(model => model.tipoOferta.FullName)
                     </dd>
-                    @* <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.precio)
-                    </dt>
-                    <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.precio)
-                    </dd>*@
                     <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.localizacion)
+                        @Html.DisplayNameFor(model => model.tipoPropiedad.FullName)
                     </dt>
                     <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.localizacion)
+                        @Html.DisplayFor(model => model.tipoPropiedad.FullName)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.valorVenta)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.valorVenta)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.valorArriendo)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.valorArriendo)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.incluyeAdministracion)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.incluyeAdministracion)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.valorAdministracion)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.valorAdministracion)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.valorMetro)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.valorMetro)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.ciudad.FullName)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.ciudad.FullName)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.direccion)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.direccion)
                     </dd>
                     <dt class="col-sm-2">
                         @Html.DisplayNameFor(model => model.barrio)
@@ -46,35 +76,77 @@
                     <dd class="col-sm-10">
                         @Html.DisplayFor(model => model.barrio)
                     </dd>
-                    @*  <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.dormitorios)
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.localizacion)
                     </dt>
                     <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.dormitorios)
+                        @Html.DisplayFor(model => model.localizacion)
                     </dd>
                     <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.banos)
+                        @Html.DisplayNameFor(model => model.estratoId)
                     </dt>
                     <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.banos)
+                        @Html.DisplayFor(model => model.estratoId)
                     </dd>
                     <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.garages)
+                        @Html.DisplayNameFor(model => model.areaPrivada)
                     </dt>
                     <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.garages)
+                        @Html.DisplayFor(model => model.areaPrivada)
                     </dd>
                     <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.area)
+                        @Html.DisplayNameFor(model => model.areaConstruida)
                     </dt>
                     <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.area)
-                    </dd>*@
+                        @Html.DisplayFor(model => model.areaConstruida)
+                    </dd>
                     <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.anioConstruccion)
+                        @Html.DisplayNameFor(model => model.numeroPiso)
                     </dt>
                     <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.anioConstruccion)
+                        @Html.DisplayFor(model => model.numeroPiso)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.areaFondo)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.areaFondo)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.tiempoConstruido.FullName)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.tiempoConstruido.FullName)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.numeroHabitacion.FullName)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.numeroHabitacion.FullName)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.numeroBano.FullName )
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.numeroBano.FullName)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.numeroParqueadero.FullName)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.numeroParqueadero.FullName)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.tipoParqueadero.FullName)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.tipoParqueadero.FullName)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.caracteristicaParqueadero.FullName)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.caracteristicaParqueadero.FullName)
                     </dd>
                     <dt class="col-sm-2">
                         @Html.DisplayNameFor(model => model.caracteristicas)
@@ -88,35 +160,29 @@
                     <dd class="col-sm-10">
                         @Html.DisplayFor(model => model.video)
                     </dd>
-                    @*  <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.plano)
-                    </dt>
-                    <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.plano)
-                    </dd>*@
                     <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.tipoPropiedadId)
+                        @Html.DisplayNameFor(model => model.descripcion)
                     </dt>
                     <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.tipoPropiedadId)
+                        @Html.DisplayFor(model => model.descripcion)
                     </dd>
                     <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.estadoPropiedadId)
+                        @Html.DisplayNameFor(model => model.anioConstruccion)
                     </dt>
                     <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.estadoPropiedadId)
+                        @Html.DisplayFor(model => model.anioConstruccion)
                     </dd>
                     <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.ciudadId)
+                        @Html.DisplayNameFor(model => model.estadoPropiedad.FullName)
                     </dt>
                     <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.ciudadId)
+                        @Html.DisplayFor(model => model.estadoPropiedad.FullName)
                     </dd>
                     <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.agenteId)
+                        @Html.DisplayNameFor(model => model.agente.FullName)
                     </dt>
                     <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.agenteId)
+                        @Html.DisplayFor(model => model.agente.FullName)
                     </dd>
                     <dt class="col-sm-2">
                         @Html.DisplayNameFor(model => model.isActive)

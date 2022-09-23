@@ -53,7 +53,7 @@ namespace DommunAdmin.Models
         [Display(Name = "Número de Piso")]
         public int? numeroPiso { get; set; }
 
-        [Display(Name = "Area de Fondo")]
+        [Display(Name = "Area de Fondo M2")]
         public decimal areaFondo { get; set; }
 
         [Display(Name = "Tiempo Construido")]
@@ -93,9 +93,18 @@ namespace DommunAdmin.Models
         [Display(Name = "Activo")]
         public bool isActive { get; set; }
 
-        public AgenteDto? agente { get; set; }
-        public CiudadDto? ciudad { get; set; }
         public TipoOfertaDto? tipoOferta { get; set; }
         public TipoPropiedadDto? tipoPropiedad { get; set; }
+        public EstadoPropiedadDto? estadoPropiedad { get; set; }
+        public CiudadDto? ciudad { get; set; }
+        public AgenteDto? agente { get; set; }
+        public EstratoDto? estrato { get; set; }
+
+        public TiempoConstruidoDto? tiempoConstruido { get; set; }
+        public TipoParqueaderoDto? tipoParqueadero { get; set; }
+        public CaracteristicaParqueaderoDto? caracteristicaParqueadero { get; set; }
+        public NumeroBanoDto? numeroBano { get; set; }
+        public NumeroHabitacionDto? numeroHabitacion { get; set; }
+        public NumeroParqueaderoDto? numeroParqueadero { get; set; }
     }
 }

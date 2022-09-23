@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
+using System.Xml.Linq;
 
 namespace DommunAdmin.Models
 {
-    public class EstadoPropiedadDto
+    public class TiempoConstruidoDto
     {
         [HiddenInput]
         public int id { get; set; }
@@ -21,7 +22,7 @@ namespace DommunAdmin.Models
         [Display(Name = "Activo")]
         public bool isActive { get; set; }
 
-        [Display(Name = "Estado Propiedad")]
+        [Display(Name = "Tiempo Construido")]
         public string FullName
         {
             get

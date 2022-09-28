@@ -55,12 +55,14 @@ namespace DommunAdmin.Models
         public bool isActive { get; set; }
 
         [Display(Name = "Agente")]
-        public string FullName
+        public string fullName
         {
             get
             {
                 return nombres + " " + apellidos;
             }
         }
+
+        public InmobiliariaDto? inmobiliaria { get; set; }
     }
 }

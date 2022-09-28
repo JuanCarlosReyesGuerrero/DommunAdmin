@@ -22,7 +22,7 @@ namespace DommunAdmin.Models
         public bool isActive { get; set; }
 
         [Display(Name = "Estado Propiedad")]
-        public string FullName
+        public string fullName
         {
             get
             {

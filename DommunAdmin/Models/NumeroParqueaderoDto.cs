@@ -23,7 +23,7 @@ namespace DommunAdmin.Models
         public bool isActive { get; set; }
 
         [Display(Name = "Número Parqueaderos")]
-        public string FullName
+        public string fullName
         {
             get
             {

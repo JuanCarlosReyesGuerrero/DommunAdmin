@@ -6,7 +6,7 @@ namespace DommunAdmin.Models.EntityMapper
     {
         public AutoMapper()
         {
-            //CreateMap<Agente, AgenteDto>().ReverseMap();
+            CreateMap<AgenteDto, AgenteDto>().ReverseMap();
             //CreateMap<AgenteDto, Agente>();
 
             //CreateMap<Inmobiliaria, InmobiliariaDto>().ReverseMap();

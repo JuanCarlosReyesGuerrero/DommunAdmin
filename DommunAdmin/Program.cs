@@ -17,6 +17,7 @@ builder.Services.AddScoped(typeof(IFotografiaService), typeof(FotografiaService)
 builder.Services.AddScoped(typeof(IFotografiaPropiedadService), typeof(FotografiaPropiedadService));
 builder.Services.AddScoped(typeof(IPropiedadService), typeof(PropiedadService));
 builder.Services.AddScoped(typeof(ITipoPropiedadService), typeof(TipoPropiedadService));
+builder.Services.AddScoped(typeof(ITipoOfertaService), typeof(TipoOfertaService));
 
 
 

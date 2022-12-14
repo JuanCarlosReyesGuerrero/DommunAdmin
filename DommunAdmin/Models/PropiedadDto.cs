@@ -8,6 +8,9 @@ namespace DommunAdmin.Models
         [HiddenInput]
         public int id { get; set; }
 
+        [Display(Name = "Titulo")]
+        public int? titulo { get; set; }
+
         [Display(Name = "Tipo Oferta")]
         public int? tipoOfertaId { get; set; }
 

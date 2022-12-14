@@ -18,99 +18,220 @@
                 <div class="live-preview">
                     <form class="row g-3" asp-action="Create">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                      @*  <div class="col-md-4">
-                            <label asp-for="titulo" class="control-label"></label>
-                            <input asp-for="titulo" class="form-control" />
-                            <span asp-validation-for="titulo" class="text-danger"></span>
-                        </div>
 
-                        <div class="col-md-4">
-                            <label asp-for="precio" class="control-label"></label>
-                            <input asp-for="precio" class="form-control" />
-                            <span asp-validation-for="precio" class="text-danger"></span>
-                        </div>*@
-                        <div class="col-md-4">
-                            <label asp-for="localizacion" class="control-label"></label>
-                            <input asp-for="localizacion" class="form-control" />
-                            <span asp-validation-for="localizacion" class="text-danger"></span>
-                        </div>
-                        <div class="col-md-12">
-                            <label asp-for="descripcion" class="control-label"></label>
-                            <textarea asp-for="descripcion" class="form-control" rows="5" cols="40"></textarea>
-                            <span asp-validation-for="descripcion" class="text-danger"></span>
-                        </div>
-                        <div class="col-md-4">
-                            <label asp-for="barrio" class="control-label"></label>
-                            <input asp-for="barrio" class="form-control" />
-                            <span asp-validation-for="barrio" class="text-danger"></span>
-                        </div>
-                       @* <div class="col-md-4">
-                            <label asp-for="dormitorios" class="control-label"></label>
-                            <input asp-for="dormitorios" class="form-control" />
-                            <span asp-validation-for="dormitorios" class="text-danger"></span>
-                        </div>
-                        <div class="col-md-4">
-                            <label asp-for="banos" class="control-label"></label>
-                            <input asp-for="banos" class="form-control" />
-                            <span asp-validation-for="banos" class="text-danger"></span>
-                        </div>
-                        <div class="col-md-4">
-                            <label asp-for="garages" class="control-label"></label>
-                            <input asp-for="garages" class="form-control" />
-                            <span asp-validation-for="garages" class="text-danger"></span>
-                        </div>
-                        <div class="col-md-4">
-                            <label asp-for="area" class="control-label"></label>
-                            <input asp-for="area" class="form-control" />
-                            <span asp-validation-for="area" class="text-danger"></span>
-                        </div>*@
-                        <div class="col-md-4">
-                            <label asp-for="anioConstruccion" class="control-label"></label>
-                            <input asp-for="anioConstruccion" class="form-control" />
-                            <span asp-validation-for="anioConstruccion" class="text-danger"></span>
-                        </div>
-                        <div class="col-md-4">
-                            <label asp-for="caracteristicas" class="control-label"></label>
-                            <input asp-for="caracteristicas" class="form-control" />
-                            <span asp-validation-for="caracteristicas" class="text-danger"></span>
-                        </div>
-                        <div class="col-md-4">
-                            <label asp-for="video" class="control-label"></label>
-                            <input asp-for="video" class="form-control" />
-                            <span asp-validation-for="video" class="text-danger"></span>
-                        </div>
-                       @* <div class="col-md-4">
-                            <label asp-for="plano" class="control-label"></label>
-                            <input asp-for="plano" class="form-control" />
-                            <span asp-validation-for="plano" class="text-danger"></span>
-                        </div>*@
-                        <div class="col-md-4">
-                            <label asp-for="tipoPropiedadId" class="control-label"></label>
-                            <select asp-for="tipoPropiedadId" class="form-select mb-3" asp-items="ViewBag.TipoPropiedad">
-                                <option value="0">Seleccione...</option>
-                            </select>
-                            <span asp-validation-for="tipoPropiedadId" class="text-danger"></span>
-                        </div>
-                        <div class="col-md-4">
-                            <label asp-for="estadoPropiedadId" class="control-label"></label>
-                            <select asp-for="estadoPropiedadId" class="form-select mb-3" asp-items="ViewBag.EstadoPropiedad">
-                                <option value="0">Seleccione...</option>
-                            </select>
-                            <span asp-validation-for="estadoPropiedadId" class="text-danger"></span>
-                        </div>
-                        <div class="col-md-4">
-                            <label asp-for="ciudadId" class="control-label"></label>
-                            <select asp-for="ciudadId" class="form-select mb-3" asp-items="ViewBag.Ciudad">
-                                <option value="0">Seleccione...</option>
-                            </select>
-                            <span asp-validation-for="ciudadId" class="text-danger"></span>
-                        </div>
-                        <div class="col-md-4">
-                            <label asp-for="agenteId" class="control-label"></label>
-                            <select asp-for="agenteId" class="form-select mb-3" asp-items="ViewBag.Agente">
-                                <option value="0">Seleccione...</option>
-                            </select>
-                            <span asp-validation-for="agenteId" class="text-danger"></span>
+
+                        <ul class="nav nav-pills nav-success mb-3" role="tablist">
+                            <li class="nav-item waves-effect waves-light">
+                                <a class="nav-link active" data-bs-toggle="tab" href="#home-1" role="tab">Básico</a>
+                            </li>
+                            <li class="nav-item waves-effect waves-light">
+                                <a class="nav-link" data-bs-toggle="tab" href="#profile-1" role="tab">Dirección</a>
+                            </li>
+                            <li class="nav-item waves-effect waves-light">
+                                <a class="nav-link" data-bs-toggle="tab" href="#messages-1" role="tab">Adicional</a>
+                            </li>
+                            <li class="nav-item waves-effect waves-light">
+                                <a class="nav-link" data-bs-toggle="tab" href="#settings-1" role="tab">Medio</a>
+                            </li>
+                            <li class="nav-item waves-effect waves-light">
+                                <a class="nav-link" data-bs-toggle="tab" href="#confirmation-1" role="tab">Confirmación</a>
+                            </li>
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content text-muted">
+                            <div class="tab-pane active" id="home-1" role="tabpanel">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label asp-for="titulo" class="control-label"></label>
+                                        <input asp-for="titulo" class="form-control" />
+                                        <span asp-validation-for="titulo" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label asp-for="tipoOfertaId" class="control-label"></label>
+                                        <select asp-for="tipoOfertaId" class="form-select mb-3" asp-items="ViewBag.TipoOferta">
+                                            <option value="0">Seleccione...</option>
+                                        </select>
+                                        <span asp-validation-for="tipoOfertaId" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label asp-for="tipoPropiedadId" class="control-label"></label>
+                                        <select asp-for="tipoPropiedadId" class="form-select mb-3" asp-items="ViewBag.TipoPropiedad">
+                                            <option value="0">Seleccione...</option>
+                                        </select>
+                                        <span asp-validation-for="tipoPropiedadId" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label asp-for="valorVenta" class="control-label"></label>
+                                        <input asp-for="valorVenta" class="form-control" />
+                                        <span asp-validation-for="valorVenta" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label asp-for="valorArriendo" class="control-label"></label>
+                                        <input asp-for="valorArriendo" class="form-control" />
+                                        <span asp-validation-for="valorArriendo" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label asp-for="valorMetro" class="control-label"></label>
+                                        <input asp-for="valorMetro" class="form-control" />
+                                        <span asp-validation-for="valorMetro" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="control-label"></label>
+                                        <div class="form-group form-check">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" asp-for="incluyeAdministracion" /> @Html.DisplayNameFor(model => model.incluyeAdministracion)
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label asp-for="valorAdministracion" class="control-label"></label>
+                                        <input asp-for="valorAdministracion" class="form-control" />
+                                        <span asp-validation-for="valorAdministracion" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label asp-for="estadoPropiedadId" class="control-label"></label>
+                                        <select asp-for="estadoPropiedadId" class="form-select mb-3" asp-items="ViewBag.EstadoPropiedad">
+                                            <option value="0">Seleccione...</option>
+                                        </select>
+                                        <span asp-validation-for="estadoPropiedadId" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label asp-for="descripcion" class="control-label"></label>
+                                        <textarea asp-for="descripcion" class="form-control" rows="5" cols="40"></textarea>
+                                        <span asp-validation-for="descripcion" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="profile-1" role="tabpanel">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label asp-for="ciudadId" class="control-label"></label>
+                                        <select asp-for="ciudadId" class="form-select mb-3" asp-items="ViewBag.Ciudad">
+                                            <option value="0">Seleccione...</option>
+                                        </select>
+                                        <span asp-validation-for="ciudadId" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label asp-for="direccion" class="control-label"></label>
+                                        <input asp-for="direccion" class="form-control" />
+                                        <span asp-validation-for="direccion" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label asp-for="barrio" class="control-label"></label>
+                                        <input asp-for="barrio" class="form-control" />
+                                        <span asp-validation-for="barrio" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label asp-for="localizacion" class="control-label"></label>
+                                        <input asp-for="localizacion" class="form-control" />
+                                        <span asp-validation-for="localizacion" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label asp-for="estratoId" class="control-label"></label>
+                                        <select asp-for="estratoId" class="form-select mb-3" asp-items="ViewBag.Estrato">
+                                            <option value="0">Seleccione...</option>
+                                        </select>
+                                        <span asp-validation-for="estratoId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="messages-1" role="tabpanel">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label asp-for="numeroPiso" class="control-label"></label>
+                                        <input asp-for="numeroPiso" class="form-control" />
+                                        <span asp-validation-for="numeroPiso" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label asp-for="areaFondo" class="control-label"></label>
+                                        <input asp-for="areaFondo" class="form-control" />
+                                        <span asp-validation-for="areaFondo" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label asp-for="areaPrivada" class="control-label"></label>
+                                        <input asp-for="areaPrivada" class="form-control" />
+                                        <span asp-validation-for="areaPrivada" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label asp-for="areaConstruida" class="control-label"></label>
+                                        <input asp-for="areaConstruida" class="form-control" />
+                                        <span asp-validation-for="areaConstruida" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label asp-for="anioConstruccion" class="control-label"></label>
+                                        <input asp-for="anioConstruccion" class="form-control" />
+                                        <span asp-validation-for="anioConstruccion" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label asp-for="tiempoConstruidoId" class="control-label"></label>
+                                        <select asp-for="tiempoConstruidoId" class="form-select mb-3" asp-items="ViewBag.TiempoConstruido">
+                                            <option value="0">Seleccione...</option>
+                                        </select>
+                                        <span asp-validation-for="tiempoConstruidoId" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label asp-for="numeroHabitacionId" class="control-label"></label>
+                                        <select asp-for="numeroHabitacionId" class="form-select mb-3" asp-items="ViewBag.NumeroHabitacion">
+                                            <option value="0">Seleccione...</option>
+                                        </select>
+                                        <span asp-validation-for="numeroHabitacionId" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label asp-for="numeroBanoId" class="control-label"></label>
+                                        <select asp-for="numeroBanoId" class="form-select mb-3" asp-items="ViewBag.NumeroBano">
+                                            <option value="0">Seleccione...</option>
+                                        </select>
+                                        <span asp-validation-for="numeroBanoId" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label asp-for="numeroHabitacionId" class="control-label"></label>
+                                        <select asp-for="numeroHabitacionId" class="form-select mb-3" asp-items="ViewBag.NumeroHabitacion">
+                                            <option value="0">Seleccione...</option>
+                                        </select>
+                                        <span asp-validation-for="numeroHabitacionId" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label asp-for="tipoParqueaderoId" class="control-label"></label>
+                                        <select asp-for="tipoParqueaderoId" class="form-select mb-3" asp-items="ViewBag.TipoParqueadero">
+                                            <option value="0">Seleccione...</option>
+                                        </select>
+                                        <span asp-validation-for="tipoParqueaderoId" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label asp-for="caracteristicaParqueaderoId" class="control-label"></label>
+                                        <select asp-for="caracteristicaParqueaderoId" class="form-select mb-3" asp-items="ViewBag.CaracteristicaParqueadero">
+                                            <option value="0">Seleccione...</option>
+                                        </select>
+                                        <span asp-validation-for="caracteristicaParqueaderoId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="settings-1" role="tabpanel">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label asp-for="caracteristicas" class="control-label"></label>
+                                        <input asp-for="caracteristicas" class="form-control" />
+                                        <span asp-validation-for="caracteristicas" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label asp-for="video" class="control-label"></label>
+                                        <input asp-for="video" class="form-control" />
+                                        <span asp-validation-for="video" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label asp-for="agenteId" class="control-label"></label>
+                                        <select asp-for="agenteId" class="form-select mb-3" asp-items="ViewBag.Agente">
+                                            <option value="0">Seleccione...</option>
+                                        </select>
+                                        <span asp-validation-for="agenteId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="confirmation-1" role="tabpanel">
+                                <div class="row">
+                                </div>
+                            </div>
                         </div>
                         <div class="col-12">
                             <div class="form-group form-check">

@@ -14,6 +14,7 @@ namespace DommunAdmin.Controllers
         private readonly IEstadoPropiedadService estadoPropiedadService;
         private readonly IAgenteService agenteService;
         private readonly ITipoPropiedadService tipoPropiedadService;
+        private readonly ITipoOfertaService tipoOfertaService;
 
         public PropiedadController(
             IPropiedadService _inmobiliariaService,
@@ -21,7 +22,8 @@ namespace DommunAdmin.Controllers
             IAgenteService _agenteService,
             ITipoPropiedadService _tipoPropiedadService,
             ICiudadService _ciudadService,
-            IEstadoPropiedadService _estadoPropiedadService)
+            IEstadoPropiedadService _estadoPropiedadService,
+            ITipoOfertaService _tipoOfertaService)
         {
             this.inmobiliariaService = _inmobiliariaService;
             this.commonServices = _commonServices;
@@ -29,6 +31,7 @@ namespace DommunAdmin.Controllers
             this.tipoPropiedadService = _tipoPropiedadService;
             this.ciudadService = _ciudadService;
             this.estadoPropiedadService = _estadoPropiedadService;
+            this.tipoOfertaService = _tipoOfertaService;
         }
 
         public async Task<ActionResult> Index()
@@ -84,6 +87,12 @@ namespace DommunAdmin.Controllers
 
             ViewBag.EstadoPropiedad = listEstadoPropiedad;
 
+
+            List<SelectListItem> listTipoOferta = new List<SelectListItem>();
+
+            listTipoOferta = await tipoOfertaService.GetSelectListItems();
+
+            ViewBag.TipoOferta = listTipoOferta;
 
 
             PropiedadDto model = new PropiedadDto();

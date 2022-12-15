@@ -19,6 +19,16 @@ builder.Services.AddScoped(typeof(IPropiedadService), typeof(PropiedadService));
 builder.Services.AddScoped(typeof(ITipoPropiedadService), typeof(TipoPropiedadService));
 builder.Services.AddScoped(typeof(ITipoOfertaService), typeof(TipoOfertaService));
 
+builder.Services.AddScoped(typeof(ICaracteristicaParqueaderoService), typeof(CaracteristicaParqueaderoService));
+builder.Services.AddScoped(typeof(ICaracteristicaPropiedadService), typeof(CaracteristicaPropiedadService));
+builder.Services.AddScoped(typeof(ICaracteristicaService), typeof(CaracteristicaService));
+builder.Services.AddScoped(typeof(IEstratoService), typeof(EstratoService));
+builder.Services.AddScoped(typeof(INumeroBanoService), typeof(NumeroBanoService));
+builder.Services.AddScoped(typeof(INumeroHabitacionService), typeof(NumeroHabitacionService));
+builder.Services.AddScoped(typeof(INumeroParqueaderoService), typeof(NumeroParqueaderoService));
+builder.Services.AddScoped(typeof(ITiempoConstruidoService), typeof(TiempoConstruidoService));
+builder.Services.AddScoped(typeof(ITipoCaracteristicaService), typeof(TipoCaracteristicaService));
+builder.Services.AddScoped(typeof(ITipoParqueaderoService), typeof(TipoParqueaderoService));
 
 
 

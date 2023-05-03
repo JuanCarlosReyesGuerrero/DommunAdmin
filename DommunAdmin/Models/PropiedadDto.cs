@@ -9,7 +9,7 @@ namespace DommunAdmin.Models
         public int id { get; set; }
 
         [Display(Name = "Titulo")]
-        public int? titulo { get; set; }
+        public string? titulo { get; set; }
 
         [Display(Name = "Tipo Oferta")]
         public int? tipoOfertaId { get; set; }

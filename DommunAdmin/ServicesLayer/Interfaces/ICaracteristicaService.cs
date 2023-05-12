@@ -11,6 +11,6 @@ namespace DommunAdmin.ServicesLayer.Interfaces
         Task<ResultadoApi> UpdateCaracteristica(CaracteristicaDto objeto);
         Task<ResultadoApi> DeleteCaracteristica(int? Id);
 
-        Task<List<SelectListItem>> GetSelectListItems();
+        Task<List<SelectListItem>> GetSelectListItemsInterior();
     }
 }

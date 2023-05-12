@@ -114,7 +114,7 @@ namespace DommunAdmin.ServicesLayer.Services
             return resultado;
         }
 
-        public async Task<List<SelectListItem>> GetSelectListItems()
+        public async Task<List<SelectListItem>> GetSelectListItemsInterior()
         {
             var selectList = new List<SelectListItem>();
 
@@ -122,7 +122,7 @@ namespace DommunAdmin.ServicesLayer.Services
 
             elements = await GetAllCaracteristicas();
 
-            foreach (var element in elements)
+            foreach (var element in elements.Where(x => x.tipoCaracteristicaId == 1))
             {
                 if (element.isActive == true)
                     selectList.Add(new SelectListItem

@@ -42,6 +42,7 @@
                         <div class="tab-content text-muted">
                             <div class="tab-pane active" id="home-1" role="tabpanel">
                                 <div class="row">
+
                                     <div class="col-md-4">
                                         <label asp-for="titulo" class="control-label"></label>
                                         <input asp-for="titulo" class="form-control" />
@@ -226,6 +227,39 @@
                                         </select>
                                         <span asp-validation-for="agenteId" class="text-danger"></span>
                                     </div>
+
+                                    <label class="control-label">Interiores</label>
+
+                                    @foreach (var item in ViewBag.CaracteristicaInterior)
+                                    {
+                                        <div class="col-md-4">
+                                            <input type="checkbox" name="aaa" value="@item.Value" />
+                                            <label for="@item.Text">@item.Text</label>
+                                        </div>
+                                    }
+
+                                    <label class="control-label">Exteriores</label>
+
+                                    @foreach (var item in ViewBag.CaracteristicaInterior)
+                                    {
+                                        <div class="col-md-4">
+                                            <input type="checkbox" name="aaa" value="@item.Value" />
+                                            <label for="@item.Text">@item.Text</label>
+                                        </div>
+                                    }
+
+
+                                    @* <div class="col-md-4">
+
+                                    Interiores*@
+
+                                    @* <label asp-for="tipoOfertaId" class="control-label"></label>
+                                    <select asp-for="tipoOfertaId" class="form-select mb-3" asp-items="ViewBag.Caracteristica">
+                                    <option value="0">Seleccione...</option>
+                                    </select>
+                                    <span asp-validation-for="tipoOfertaId" class="text-danger"></span>*@
+                                    @* </div>*@
+
                                 </div>
                             </div>
                             <div class="tab-pane" id="confirmation-1" role="tabpanel">

@@ -23,6 +23,7 @@ namespace DommunAdmin.Controllers
         private readonly ITipoParqueaderoService tipoParqueaderoService;
         private readonly ICaracteristicaParqueaderoService caracteristicaParqueaderoService;
         private readonly INumeroParqueaderoService numeroParqueaderoService;
+        private readonly ICaracteristicaService caracteristicaService;
 
         public PropiedadController(
             IPropiedadService _inmobiliariaService,
@@ -38,7 +39,8 @@ namespace DommunAdmin.Controllers
             INumeroBanoService _numeroBanoService,
             ITipoParqueaderoService _tipoParqueaderoService,
             ICaracteristicaParqueaderoService _caracteristicaParqueaderoService,
-            INumeroParqueaderoService _numeroParqueaderoService)
+            INumeroParqueaderoService _numeroParqueaderoService,
+            ICaracteristicaService caracteristicaService)
         {
             this.inmobiliariaService = _inmobiliariaService;
             this.commonServices = _commonServices;
@@ -54,6 +56,7 @@ namespace DommunAdmin.Controllers
             this.tipoParqueaderoService = _tipoParqueaderoService;
             this.caracteristicaParqueaderoService = _caracteristicaParqueaderoService;
             this.numeroParqueaderoService = _numeroParqueaderoService;
+            this.caracteristicaService = caracteristicaService;
         }
 
         public async Task<ActionResult> Index()
@@ -134,6 +137,10 @@ namespace DommunAdmin.Controllers
             List<SelectListItem> listCaracteristicaparqueadero = new List<SelectListItem>();
             listCaracteristicaparqueadero = await caracteristicaParqueaderoService.GetSelectListItems();
             ViewBag.Caracteristicaparqueadero = listCaracteristicaparqueadero;
+
+            List<SelectListItem> listCheckInteriores = new List<SelectListItem>();
+            listCheckInteriores = await caracteristicaService.GetSelectListItemsInterior();
+            ViewBag.CaracteristicaInterior = listCheckInteriores;
 
             PropiedadDto model = new PropiedadDto();
 

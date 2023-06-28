@@ -30,6 +30,8 @@ builder.Services.AddScoped(typeof(ITiempoConstruidoService), typeof(TiempoConstr
 builder.Services.AddScoped(typeof(ITipoCaracteristicaService), typeof(TipoCaracteristicaService));
 builder.Services.AddScoped(typeof(ITipoParqueaderoService), typeof(TipoParqueaderoService));
 
+builder.Services.AddScoped(typeof(IBlobStorageService), typeof(BlobStorageService));
+
 
 
 //builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());

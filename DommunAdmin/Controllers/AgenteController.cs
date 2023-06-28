@@ -58,12 +58,14 @@ namespace DommunAdmin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(AgenteDto model)
+        public async Task<IActionResult> Create(AgenteDto model, IFormFile files)
         {
             ResultadoApi vTemp = new ResultadoApi();
 
             try
             {
+                model.Foto= files;
+
                 vTemp = await agenteService.InsertAgente(model);
 
                 if (vTemp.Success)
@@ -140,6 +142,6 @@ namespace DommunAdmin.Controllers
             {
                 return View();
             }
-        }
+        }      
     }
 }

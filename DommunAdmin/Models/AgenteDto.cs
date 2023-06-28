@@ -63,6 +63,8 @@ namespace DommunAdmin.Models
             }
         }
 
+        public IFormFile? Foto { get; set; }
+
         public InmobiliariaDto? inmobiliaria { get; set; }
     }
 }

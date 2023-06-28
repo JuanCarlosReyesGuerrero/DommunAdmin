@@ -79,7 +79,7 @@ namespace DommunAdmin.ServicesLayer.Services
 
             var content = new StringContent(JsonConvert.SerializeObject(objeto), Encoding.UTF8, "application/json");
 
-            var response = await cliente.PostAsync("api/Agente/InsertAgente", content);
+            var response = await cliente.PostAsync("api/Agente/InsertAgente", content,);
 
             if (response.IsSuccessStatusCode)
             {

@@ -17,7 +17,8 @@
             </div>
             <div class="card-body">
                 <div class="live-preview">
-                    <form class="row g-3" asp-action="Create">
+                    @*<form class="row g-3" asp-action="Create">*@
+                    <form class="row g-3" method="post" enctype="multipart/form-data" asp-controller="Agente" asp-action="Create">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <div class="col-md-4">
                             <label asp-for="slug" class="control-label"></label>
@@ -39,11 +40,18 @@
                             <input asp-for="email" class="form-control" />
                             <span asp-validation-for="email" class="text-danger"></span>
                         </div>
+                        @* <div class="col-md-4">
+                        <label asp-for="fotoPerfil" class="control-label"></label>
+                        <input asp-for="fotoPerfil" class="form-control" />
+                        <span asp-validation-for="fotoPerfil" class="text-danger"></span>
+                        </div>*@
+
                         <div class="col-md-4">
                             <label asp-for="fotoPerfil" class="control-label"></label>
-                            <input asp-for="fotoPerfil" class="form-control" />
+                            <input asp-for="fotoPerfil" class="form-control" name="files" multiple="multiple" type="file" />
                             <span asp-validation-for="fotoPerfil" class="text-danger"></span>
                         </div>
+
                         <div class="col-md-4">
                             <label asp-for="celular" class="control-label"></label>
                             <input asp-for="celular" class="form-control" />

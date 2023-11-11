@@ -2,21 +2,31 @@
 using DommunAdmin.ServicesLayer.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Net.Http.Headers;
+using System.Net.Mime;
+using System.Text;
 using static DommunAdmin.Commons.Enums;
 
 namespace DommunAdmin.Controllers
 {
     public class AgenteController : Controller
     {
+        private readonly IHttpClientFactory _httpClientFactory;
+
         private readonly IAgenteService agenteService;
         private readonly IInmobiliariaService inmobiliariaService;
         private readonly ICommonServices commonServices;
-
-        public AgenteController(IAgenteService _agenteService, IInmobiliariaService _inmobiliariaService, ICommonServices _commonServices)
+        //https://www.youtube.com/watch?v=aWjmi-Iehas
+        public AgenteController(
+            IAgenteService _agenteService,
+            IInmobiliariaService _inmobiliariaService,
+            ICommonServices _commonServices,
+            IHttpClientFactory httpClientFactory)
         {
             this.agenteService = _agenteService;
             this.inmobiliariaService = _inmobiliariaService;
             this.commonServices = _commonServices;
+            _httpClientFactory = httpClientFactory;
         }
 
         public async Task<ActionResult> Index()
@@ -64,8 +74,6 @@ namespace DommunAdmin.Controllers
 
             try
             {
-                model.Foto= files;
-
                 vTemp = await agenteService.InsertAgente(model);
 
                 if (vTemp.Success)
@@ -142,6 +150,6 @@ namespace DommunAdmin.Controllers
             {
                 return View();
             }
-        }      
+        }
     }
 }

@@ -6,6 +6,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddHttpClient("client", options =>
+{
+    options.BaseAddress = new Uri("");
+});
+
 //builder.Services.AddScoped<IServiceApi, ServiceApi>();
 builder.Services.AddScoped<IAgenteService, AgenteService>();
 builder.Services.AddScoped<IInmobiliariaService, InmobiliariaService>();

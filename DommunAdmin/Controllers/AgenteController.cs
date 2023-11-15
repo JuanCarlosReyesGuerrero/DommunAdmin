@@ -68,7 +68,7 @@ namespace DommunAdmin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(AgenteDto model, IFormFile files)
+        public async Task<IActionResult> Create(AgenteDto model)
         {
             ResultadoApi vTemp = new ResultadoApi();
 

@@ -1,3 +1,4 @@
+using DommunAdmin.Commun.Logs;
 using DommunAdmin.ServicesLayer.Interfaces;
 using DommunAdmin.ServicesLayer.Services;
 
@@ -36,6 +37,7 @@ builder.Services.AddScoped(typeof(ITipoCaracteristicaService), typeof(TipoCaract
 builder.Services.AddScoped(typeof(ITipoParqueaderoService), typeof(TipoParqueaderoService));
 
 builder.Services.AddScoped(typeof(IBlobStorageService), typeof(BlobStorageService));
+builder.Services.AddScoped(typeof(ICreateLogger), typeof(CreateLogger));
 
 
 

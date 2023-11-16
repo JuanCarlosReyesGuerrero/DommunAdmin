@@ -15,7 +15,7 @@
             </div>
             <div class="card-body">
                 <div class="live-preview">
-                    <form class="row g-3" asp-action="Edit">
+                    <form class="row g-3" method="post" enctype="multipart/form-data" asp-controller="Agente" asp-action="Edit">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <input type="hidden" asp-for="id" />
                         <div class="col-md-4">
@@ -40,8 +40,8 @@
                         </div>
                         <div class="col-md-4">
                             <label asp-for="fotoPerfil" class="control-label"></label>
-                            <input asp-for="fotoPerfil" class="form-control" />
-                            <span asp-validation-for="fotoPerfil" class="text-danger"></span>
+                            <input asp-for="foto" class="form-control" />
+                            <span asp-validation-for="foto" class="text-danger"></span>
                         </div>
                         <div class="col-md-4">
                             <label asp-for="celular" class="control-label"></label>
@@ -107,4 +107,4 @@
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
-    }
+}

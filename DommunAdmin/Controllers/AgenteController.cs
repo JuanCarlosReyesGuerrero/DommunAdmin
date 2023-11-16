@@ -119,7 +119,6 @@ namespace DommunAdmin.Controllers
                     vTemp = await agenteService.UpdateAgente(model);
                 }
 
-
                 if (vTemp.Success)
                     TempData["Mensaje"] = commonServices.ShowAlert(Alerts.Success, vTemp.Message);
                 else

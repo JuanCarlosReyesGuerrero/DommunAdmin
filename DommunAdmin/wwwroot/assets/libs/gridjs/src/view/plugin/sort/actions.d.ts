@@ -1,19 +1,3 @@
-import { BaseActions } from '../../base/actions';
 import { Comparator, TCell } from '../../../types';
-export interface SortActionsType {
-    SORT_COLUMN: {
-        index: number;
-        direction: 1 | -1;
-        multi?: boolean;
-        compare?: Comparator<TCell>;
-    };
-    SORT_COLUMN_TOGGLE: {
-        index: number;
-        multi?: boolean;
-        compare?: Comparator<TCell>;
-    };
-}
-export declare class SortActions extends BaseActions<SortActionsType> {
-    sortColumn(index: number, direction: 1 | -1, multi?: boolean, compare?: Comparator<TCell>): void;
-    sortToggle(index: number, multi?: boolean, compare?: Comparator<TCell>): void;
-}
+export declare const SortColumn: (index: number, direction: 1 | -1, multi?: boolean, compare?: Comparator<TCell>) => (state: any) => any;
+export declare const SortToggle: (index: number, multi: boolean, compare?: Comparator<TCell>) => (state: any) => any;

@@ -35,6 +35,14 @@ declare class Swiper extends SvelteComponentTyped<
    */
   autoplayStop: CustomEvent<[swiper: SwiperClass]>;
   /**
+   * Event will be fired on autoplay pause (on mouse/pointer enter), when `pauseOnMouseEnter` enabled
+   */
+  autoplayPause: CustomEvent<[swiper: SwiperClass]>;
+  /**
+   * Event will be fired on autoplay resume (on mouse/pointer leave), when `pauseOnMouseEnter` enabled
+   */
+  autoplayResume: CustomEvent<[swiper: SwiperClass]>;
+  /**
    * Event will be fired when slide changed with autoplay
    */
   autoplay: CustomEvent<[swiper: SwiperClass]>;/**
@@ -55,13 +63,24 @@ declare class Swiper extends SvelteComponentTyped<
    * Event will be fired when lazy loading image will be loaded
    */
   lazyImageReady: CustomEvent<[swiper: SwiperClass, slideEl: HTMLElement, imageEl: HTMLElement]>;/**
+   * Event will be fired on mousewheel scroll
+   */
+  scroll: CustomEvent<[swiper: SwiperClass, event: WheelEvent]>;/**
    * Event will be fired on navigation hide
    */
   navigationHide: CustomEvent<[swiper: SwiperClass]>;
   /**
    * Event will be fired on navigation show
    */
-  navigationShow: CustomEvent<[swiper: SwiperClass]>;/**
+  navigationShow: CustomEvent<[swiper: SwiperClass]>;
+  /**
+   * Event will be fired on navigation prev button click
+   */
+  navigationPrev: CustomEvent<[swiper: SwiperClass]>;
+  /**
+   * Event will be fired on navigation next button click
+   */
+  navigationNext: CustomEvent<[swiper: SwiperClass]>;/**
    * Event will be fired after pagination rendered
    */
   paginationRender: CustomEvent<[swiper: SwiperClass, paginationEl: HTMLElement]>;
@@ -80,9 +99,6 @@ declare class Swiper extends SvelteComponentTyped<
    * Event will be fired on pagination show
    */
   paginationShow: CustomEvent<[swiper: SwiperClass]>;/**
-   * Event will be fired on mousewheel scroll
-   */
-  scroll: CustomEvent<[swiper: SwiperClass, event: WheelEvent]>;/**
    * Event will be fired on draggable scrollbar drag start
    */
   scrollbarDragStart: CustomEvent<[swiper: SwiperClass, event: MouseEvent | TouchEvent | PointerEvent]>;
@@ -412,7 +428,15 @@ declare class Swiper extends SvelteComponentTyped<
   
   },
   {
-    default: {};
+    default: {
+      virtualData: {
+        slides: any[];
+        offset: number;
+        from: number;
+        to: number;
+        slidesGrid: number[];
+      };
+    };
     'container-start': {};
     'wrapper-start': {};
     'wrapper-end': {};
@@ -424,7 +448,15 @@ declare class SwiperSlide extends SvelteComponentTyped<
   SwiperSlideProps,
   {},
   {
-    default: {};
+    default: {
+      data: {
+        isActive: boolean;
+        isVisible: boolean;
+        isDuplicate: boolean;
+        isPrev: boolean;
+        isNext: boolean;
+      };
+    };
   }
 > {}
 

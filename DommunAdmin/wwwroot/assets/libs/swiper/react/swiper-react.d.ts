@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { SwiperOptions, Swiper as SwiperClass } from '../types/';
+import { SwiperOptions, Swiper as SwiperClass } from '../types';
 
 interface SwiperProps extends SwiperOptions {
   /**
@@ -31,6 +31,18 @@ interface SwiperProps extends SwiperOptions {
    */
   onAutoplayStop?: (swiper: SwiperClass) => void;
   /**
+   * Event will be fired on autoplay pause
+   */
+  onAutoplayPause?: (swiper: SwiperClass) => void;
+  /**
+   * Event will be fired on autoplay resume
+   */
+  onAutoplayResume?: (swiper: SwiperClass) => void;
+  /**
+   * Event triggers continuously while autoplay is enabled. It contains time left (in ms) before transition to next slide and percentage of that time related to autoplay delay
+   */
+  onAutoplayTimeLeft?: (swiper: SwiperClass, timeLeft: number, percentage: number) => void;
+  /**
    * Event will be fired when slide changed with autoplay
    */
   onAutoplay?: (swiper: SwiperClass) => void;/**
@@ -44,20 +56,6 @@ interface SwiperProps extends SwiperOptions {
    * Event will be fired on key press
    */
   onKeyPress?: (swiper: SwiperClass, keyCode: string) => void;/**
-   * Event will be fired in the beginning of lazy loading of image
-   */
-  onLazyImageLoad?: (swiper: SwiperClass, slideEl: HTMLElement, imageEl: HTMLElement) => void;
-  /**
-   * Event will be fired when lazy loading image will be loaded
-   */
-  onLazyImageReady?: (swiper: SwiperClass, slideEl: HTMLElement, imageEl: HTMLElement) => void;/**
-   * Event will be fired on navigation hide
-   */
-  onNavigationHide?: (swiper: SwiperClass) => void;
-  /**
-   * Event will be fired on navigation show
-   */
-  onNavigationShow?: (swiper: SwiperClass) => void;/**
    * Event will be fired after pagination rendered
    */
   onPaginationRender?: (swiper: SwiperClass, paginationEl: HTMLElement) => void;
@@ -76,9 +74,21 @@ interface SwiperProps extends SwiperOptions {
    * Event will be fired on pagination show
    */
   onPaginationShow?: (swiper: SwiperClass) => void;/**
-   * Event will be fired on mousewheel scroll
+   * Event will be fired on navigation hide
    */
-  onScroll?: (swiper: SwiperClass, event: WheelEvent) => void;/**
+  onNavigationHide?: (swiper: SwiperClass) => void;
+  /**
+   * Event will be fired on navigation show
+   */
+  onNavigationShow?: (swiper: SwiperClass) => void;
+  /**
+   * Event will be fired on navigation prev button click
+   */
+  onNavigationPrev?: (swiper: SwiperClass) => void;
+  /**
+   * Event will be fired on navigation next button click
+   */
+  onNavigationNext?: (swiper: SwiperClass) => void;/**
    * Event will be fired on draggable scrollbar drag start
    */
   onScrollbarDragStart?: (swiper: SwiperClass, event: MouseEvent | TouchEvent | PointerEvent) => void;
@@ -92,6 +102,9 @@ interface SwiperProps extends SwiperOptions {
    * Event will be fired on draggable scrollbar drag end
    */
   onScrollbarDragEnd?: (swiper: SwiperClass, event: MouseEvent | TouchEvent | PointerEvent) => void;/**
+   * Event will be fired on mousewheel scroll
+   */
+  onScroll?: (swiper: SwiperClass, event: WheelEvent) => void;/**
    * Event will be fired on zoom change
    */
   onZoomChange?: (swiper: SwiperClass, scale: number, imageEl: HTMLElement, slideEl: HTMLElement) => void;
@@ -218,11 +231,6 @@ interface SwiperProps extends SwiperOptions {
    * Event will be fired when user double tap on Swiper's container. Receives `touchend` event as an arguments
    */
   onDoubleTap?: (swiper: SwiperClass, event: MouseEvent | TouchEvent | PointerEvent) => void;
-
-  /**
-   * Event will be fired right after all inner images are loaded. updateOnImagesReady should be also enabled
-   */
-  onImagesReady?: (swiper: SwiperClass) => void;
 
   /**
    * Event will be fired when Swiper progress is changed, as an arguments it receives progress that is always from 0 to 1
@@ -411,7 +419,6 @@ interface SwiperProps extends SwiperOptions {
 interface SlideData {
   isActive: boolean;
   isVisible: boolean;
-  isDuplicate: boolean;
   isPrev: boolean;
   isNext: boolean;
 }
@@ -430,6 +437,13 @@ interface SwiperSlideProps {
    * @default false
    */
   zoom?: boolean;
+
+  /**
+   * Adds lazy preloader to the slide
+   *
+   * @default false
+   */
+  lazy?: boolean;
 
   /**
    * Slide's index in slides array/collection
@@ -458,10 +472,27 @@ interface SwiperProps
     | 'onKeyPress'
     | 'onDoubleClick'
     | 'onScroll'
+    | 'onResize'
   > {}
-interface SwiperSlideProps extends React.HTMLAttributes<HTMLElement> {}
+interface SwiperSlideProps extends Omit<React.HTMLAttributes<HTMLElement>, 'children'> {}
 
-declare const Swiper: React.FunctionComponent<SwiperProps>;
-declare const SwiperSlide: React.VoidFunctionComponent<SwiperSlideProps>;
+interface SwiperRef extends React.HTMLAttributes<HTMLElement> {
+  swiper: SwiperClass;
+}
 
-export { Swiper, SwiperSlide, SwiperProps, SwiperSlideProps };
+declare const Swiper: React.FunctionComponent<React.RefAttributes<SwiperRef> & SwiperProps>;
+declare const SwiperSlide: React.FunctionComponent<SwiperSlideProps>;
+
+declare const useSwiper: () => SwiperClass;
+declare const useSwiperSlide: () => SlideData;
+
+export {
+  Swiper,
+  SwiperSlide,
+  SwiperProps,
+  SwiperSlideProps,
+  SwiperRef,
+  useSwiper,
+  useSwiperSlide,
+  SwiperClass,
+};

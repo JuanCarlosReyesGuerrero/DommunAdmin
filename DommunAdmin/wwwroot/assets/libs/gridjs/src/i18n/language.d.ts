@@ -1,6 +1,6 @@
-declare type MessageFormat = (...args: any[]) => string;
-declare type Message = string | MessageFormat;
-export declare type Language = {
+type MessageFormat = (...args: any[]) => string;
+type Message = string | MessageFormat;
+export type Language = {
     [key: string]: Message | Language;
 };
 export declare class Translator {
@@ -10,5 +10,5 @@ export declare class Translator {
     getString(message: string, lang: Language): MessageFormat;
     translate(message: string, ...args: any[]): string;
 }
-export declare function useTranslator(translator: Translator): (message: string, ...args: any[]) => string;
+export declare function useTranslator(): (message: string, ...args: any[]) => string;
 export {};

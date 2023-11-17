@@ -13,21 +13,17 @@ function prepareClasses(entries, prefix) {
   });
   return resultClasses;
 }
-
 export default function addClasses() {
   const swiper = this;
   const {
     classNames,
     params,
     rtl,
-    $el,
-    device,
-    support
-  } = swiper; // prettier-ignore
-
+    el,
+    device
+  } = swiper;
+  // prettier-ignore
   const suffixes = prepareClasses(['initialized', params.direction, {
-    'pointer-events': !support.touch
-  }, {
     'free-mode': swiper.params.freeMode && params.freeMode.enabled
   }, {
     'autoheight': params.autoHeight
@@ -45,8 +41,10 @@ export default function addClasses() {
     'css-mode': params.cssMode
   }, {
     'centered': params.cssMode && params.centeredSlides
+  }, {
+    'watch-progress': params.watchSlidesProgress
   }], params.containerModifierClass);
   classNames.push(...suffixes);
-  $el.addClass([...classNames].join(' '));
+  el.classList.add(...classNames);
   swiper.emitContainerClasses();
 }

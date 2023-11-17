@@ -1,4 +1,4 @@
-import { CSSDeclaration, OneDArray, ProtoExtends, TColumn, TData } from './types';
+import { CSSDeclaration, OneDArray, TColumn, TData } from './types';
 import Storage from './storage/storage';
 import Pipeline from './pipeline/pipeline';
 import Tabular from './tabular';
@@ -6,22 +6,22 @@ import { SearchConfig } from './view/plugin/search/search';
 import { PaginationConfig } from './view/plugin/pagination';
 import Header from './header';
 import { ServerStorageOptions } from './storage/server';
-import Dispatcher from './util/dispatcher';
 import { GenericSortConfig } from './view/plugin/sort/sort';
 import { Language, Translator } from './i18n/language';
-import { Component, ComponentChild, RefObject } from 'preact';
+import { ComponentChild, RefObject } from 'preact';
 import { EventEmitter } from './util/eventEmitter';
 import { GridEvents } from './events';
 import { PluginManager, Plugin } from './plugin';
 import Grid from './grid';
+import { Store } from './state/store';
+export declare const ConfigContext: import("preact").Context<any>;
 export interface Config {
     instance: Grid;
+    store: Store;
     eventEmitter: EventEmitter<GridEvents>;
-    dispatcher: Dispatcher<any>;
     plugin: PluginManager;
     container?: Element;
-    tableRef?: RefObject<Component>;
-    tempRef?: RefObject<HTMLDivElement>;
+    tableRef?: RefObject<HTMLTableElement>;
     data?: TData | (() => TData) | (() => Promise<TData>);
     server?: ServerStorageOptions;
     header?: Header;
@@ -31,9 +31,15 @@ export interface Config {
     autoWidth: boolean;
     width: string;
     height: string;
-    pagination: PaginationConfig;
-    sort: GenericSortConfig;
+    pagination: PaginationConfig | boolean;
+    sort: GenericSortConfig | boolean;
     translator: Translator;
+    fixedHeader: boolean;
+    resizable: boolean;
+    columns: OneDArray<TColumn | string | ComponentChild>;
+    search: SearchConfig | boolean;
+    language: Language;
+    plugins?: Plugin<any>[];
     style?: Partial<{
         table: CSSDeclaration;
         td: CSSDeclaration;
@@ -65,23 +71,10 @@ export interface Config {
         error: string;
     }>;
 }
-interface UserConfigExtend {
-    fixedHeader: boolean;
-    resizable: boolean;
-    columns: OneDArray<TColumn | string | ComponentChild>;
-    search: SearchConfig | boolean;
-    pagination: PaginationConfig | boolean;
-    sort: GenericSortConfig | boolean;
-    language: Language;
-    plugins?: Plugin<any>[];
-}
-export declare type UserConfig = ProtoExtends<Partial<Config>, Partial<UserConfigExtend>>;
 export declare class Config {
-    private _userConfig;
-    constructor(config?: Partial<Config>);
-    assign(updatedConfig: Partial<Config>): Config;
-    update(userConfig: Partial<UserConfig>): Config;
-    static defaultConfig(): Config;
-    static fromUserConfig(userConfig: UserConfig): Config;
+    constructor();
+    assign(partialConfig: Partial<Config>): Config;
+    update(partialConfig: Partial<Config>): Config;
+    static defaultConfig(): Partial<Config>;
+    static fromPartialConfig(partialConfig: Partial<Config>): Partial<Config>;
 }
-export {};

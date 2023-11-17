@@ -1,12 +1,13 @@
-import { h, ref, onMounted, onUpdated, onBeforeUnmount, watch, nextTick } from 'vue';
-import { getParams } from './get-params.js';
-import { initSwiper, mountSwiper } from './init-swiper.js';
-import { needsScrollbar, needsNavigation, needsPagination, uniqueClasses, extend } from './utils.js';
-import { renderLoop, calcLoopedSlides } from './loop.js';
-import { getChangedParams } from './get-changed-params.js';
+import { h, ref, onMounted, onUpdated, onBeforeUnmount, watch, nextTick, provide } from 'vue';
+import SwiperCore from 'swiper';
+import { getParams } from '../components-shared/get-params.js';
+import { mountSwiper } from '../components-shared/mount-swiper.js';
+import { needsScrollbar, needsNavigation, needsPagination, uniqueClasses, extend, wrapperClass } from '../components-shared/utils.js';
+import { getChangedParams } from '../components-shared/get-changed-params.js';
 import { getChildren } from './get-children.js';
-import { updateSwiper } from './update-swiper.js';
-import { renderVirtual, updateOnVirtualData } from './virtual.js';
+import { updateSwiper } from '../components-shared/update-swiper.js';
+import { renderVirtual } from './virtual.js';
+import { updateOnVirtualData } from '../components-shared/update-on-virtual-data.js';
 const Swiper = {
   name: 'Swiper',
   props: {
@@ -28,6 +29,10 @@ const Swiper = {
     },
     direction: {
       type: String,
+      default: undefined
+    },
+    oneWayMovement: {
+      type: Boolean,
       default: undefined
     },
     touchEventsTarget: {
@@ -111,11 +116,15 @@ const Swiper = {
       default: undefined
     },
     spaceBetween: {
-      type: Number,
+      type: [Number, String],
       default: undefined
     },
     slidesPerView: {
       type: [Number, String],
+      default: undefined
+    },
+    maxBackfaceHiddenSlides: {
+      type: Number,
       default: undefined
     },
     slidesPerGroup: {
@@ -250,31 +259,15 @@ const Swiper = {
       type: Boolean,
       default: undefined
     },
-    preloadImages: {
-      type: Boolean,
-      default: undefined
-    },
-    updateOnImagesReady: {
-      type: Boolean,
-      default: undefined
-    },
     loop: {
       type: Boolean,
-      default: undefined
-    },
-    loopAdditionalSlides: {
-      type: Number,
       default: undefined
     },
     loopedSlides: {
       type: Number,
       default: undefined
     },
-    loopFillGroupWithBlank: {
-      type: Boolean,
-      default: undefined
-    },
-    loopPreventsSlide: {
+    loopPreventsSliding: {
       type: Boolean,
       default: undefined
     },
@@ -318,15 +311,7 @@ const Swiper = {
       type: String,
       default: undefined
     },
-    slideBlankClass: {
-      type: String,
-      default: undefined
-    },
     slideActiveClass: {
-      type: String,
-      default: undefined
-    },
-    slideDuplicateActiveClass: {
       type: String,
       default: undefined
     },
@@ -334,15 +319,7 @@ const Swiper = {
       type: String,
       default: undefined
     },
-    slideDuplicateClass: {
-      type: String,
-      default: undefined
-    },
     slideNextClass: {
-      type: String,
-      default: undefined
-    },
-    slideDuplicateNextClass: {
       type: String,
       default: undefined
     },
@@ -350,12 +327,16 @@ const Swiper = {
       type: String,
       default: undefined
     },
-    slideDuplicatePrevClass: {
+    wrapperClass: {
       type: String,
       default: undefined
     },
-    wrapperClass: {
+    lazyPreloaderClass: {
       type: String,
+      default: undefined
+    },
+    lazyPreloadPrevNext: {
+      type: Number,
       default: undefined
     },
     runCallbacksOnInit: {
@@ -422,10 +403,6 @@ const Swiper = {
       type: [Boolean, Object],
       default: undefined
     },
-    lazy: {
-      type: [Boolean, Object],
-      default: undefined
-    },
     mousewheel: {
       type: [Boolean, Object],
       default: undefined
@@ -465,14 +442,18 @@ const Swiper = {
     freeMode: {
       type: [Boolean, Object],
       default: undefined
+    },
+    enabled: {
+      type: Boolean,
+      default: undefined
     }
   },
-  emits: ['_beforeBreakpoint', '_containerClasses', '_slideClass', '_slideClasses', '_swiper', 'activeIndexChange', 'afterInit', 'autoplay', 'autoplayStart', 'autoplayStop', 'beforeDestroy', 'beforeInit', 'beforeLoopFix', 'beforeResize', 'beforeSlideChangeStart', 'beforeTransitionStart', 'breakpoint', 'changeDirection', 'click', 'disable', 'doubleTap', 'doubleClick', 'destroy', 'enable', 'fromEdge', 'hashChange', 'hashSet', 'imagesReady', 'init', 'keyPress', 'lazyImageLoad', 'lazyImageReady', 'lock', 'loopFix', 'momentumBounce', 'navigationHide', 'navigationShow', 'observerUpdate', 'orientationchange', 'paginationHide', 'paginationRender', 'paginationShow', 'paginationUpdate', 'progress', 'reachBeginning', 'reachEnd', 'realIndexChange', 'resize', 'scroll', 'scrollbarDragEnd', 'scrollbarDragMove', 'scrollbarDragStart', 'setTransition', 'setTranslate', 'slideChange', 'slideChangeTransitionEnd', 'slideChangeTransitionStart', 'slideNextTransitionEnd', 'slideNextTransitionStart', 'slidePrevTransitionEnd', 'slidePrevTransitionStart', 'slideResetTransitionStart', 'slideResetTransitionEnd', 'sliderMove', 'sliderFirstMove', 'slidesLengthChange', 'slidesGridLengthChange', 'snapGridLengthChange', 'snapIndexChange', 'swiper', 'tap', 'toEdge', 'touchEnd', 'touchMove', 'touchMoveOpposite', 'touchStart', 'transitionEnd', 'transitionStart', 'unlock', 'update', 'zoomChange'],
-
-  setup(props, {
-    slots: originalSlots,
-    emit
-  }) {
+  emits: ['_beforeBreakpoint', '_containerClasses', '_slideClass', '_slideClasses', '_swiper', '_freeModeNoMomentumRelease', 'activeIndexChange', 'afterInit', 'autoplay', 'autoplayStart', 'autoplayStop', 'autoplayPause', 'autoplayResume', 'autoplayTimeLeft', 'beforeDestroy', 'beforeInit', 'beforeLoopFix', 'beforeResize', 'beforeSlideChangeStart', 'beforeTransitionStart', 'breakpoint', 'changeDirection', 'click', 'disable', 'doubleTap', 'doubleClick', 'destroy', 'enable', 'fromEdge', 'hashChange', 'hashSet', 'init', 'keyPress', 'lock', 'loopFix', 'momentumBounce', 'navigationHide', 'navigationShow', 'navigationPrev', 'navigationNext', 'observerUpdate', 'orientationchange', 'paginationHide', 'paginationRender', 'paginationShow', 'paginationUpdate', 'progress', 'reachBeginning', 'reachEnd', 'realIndexChange', 'resize', 'scroll', 'scrollbarDragEnd', 'scrollbarDragMove', 'scrollbarDragStart', 'setTransition', 'setTranslate', 'slideChange', 'slideChangeTransitionEnd', 'slideChangeTransitionStart', 'slideNextTransitionEnd', 'slideNextTransitionStart', 'slidePrevTransitionEnd', 'slidePrevTransitionStart', 'slideResetTransitionStart', 'slideResetTransitionEnd', 'sliderMove', 'sliderFirstMove', 'slidesLengthChange', 'slidesGridLengthChange', 'snapGridLengthChange', 'snapIndexChange', 'swiper', 'tap', 'toEdge', 'touchEnd', 'touchMove', 'touchMoveOpposite', 'touchStart', 'transitionEnd', 'transitionStart', 'unlock', 'update', 'virtualUpdate', 'zoomChange'],
+  setup(props, _ref) {
+    let {
+      slots: originalSlots,
+      emit
+    } = _ref;
     const {
       tag: Tag,
       wrapperTag: WrapperTag
@@ -497,39 +478,33 @@ const Swiper = {
     const {
       params: swiperParams,
       passedParams
-    } = getParams(props);
+    } = getParams(props, false);
     getChildren(originalSlots, slidesRef, oldSlidesRef);
     oldPassedParamsRef.value = passedParams;
     oldSlidesRef.value = slidesRef.value;
-
     const onBeforeBreakpoint = () => {
       getChildren(originalSlots, slidesRef, oldSlidesRef);
       breakpointChanged.value = true;
     };
-
-    swiperParams.onAny = (event, ...args) => {
+    swiperParams.onAny = function (event) {
+      for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+        args[_key - 1] = arguments[_key];
+      }
       emit(event, ...args);
     };
-
     Object.assign(swiperParams.on, {
       _beforeBreakpoint: onBeforeBreakpoint,
-
       _containerClasses(swiper, classes) {
         containerClasses.value = classes;
       }
+    });
 
-    }); // init Swiper
-
-    swiperRef.value = initSwiper(swiperParams);
-
-    swiperRef.value.loopCreate = () => {};
-
-    swiperRef.value.loopDestroy = () => {};
-
-    if (swiperParams.loop) {
-      swiperRef.value.loopedSlides = calcLoopedSlides(slidesRef.value, swiperParams);
-    }
-
+    // init Swiper
+    const passParams = {
+      ...swiperParams
+    };
+    delete passParams.wrapperClass;
+    swiperRef.value = new SwiperCore(passParams);
     if (swiperRef.value.virtual && swiperRef.value.params.virtual.enabled) {
       swiperRef.value.virtual.slides = slidesRef.value;
       const extendWith = {
@@ -543,21 +518,18 @@ const Swiper = {
       extend(swiperRef.value.params.virtual, extendWith);
       extend(swiperRef.value.originalParams.virtual, extendWith);
     }
-
     onUpdated(() => {
       // set initialized flag
       if (!initializedRef.value && swiperRef.value) {
         swiperRef.value.emitSlidesClasses();
         initializedRef.value = true;
-      } // watch for params change
-
-
+      }
+      // watch for params change
       const {
         passedParams: newPassedParams
-      } = getParams(props);
-      const changedParams = getChangedParams(newPassedParams, oldPassedParamsRef.value, slidesRef.value, oldSlidesRef.value);
+      } = getParams(props, false);
+      const changedParams = getChangedParams(newPassedParams, oldPassedParamsRef.value, slidesRef.value, oldSlidesRef.value, c => c.props && c.props.key);
       oldPassedParamsRef.value = newPassedParams;
-
       if ((changedParams.length || breakpointChanged.value) && swiperRef.value && !swiperRef.value.destroyed) {
         updateSwiper({
           swiper: swiperRef.value,
@@ -570,16 +542,18 @@ const Swiper = {
           paginationEl: paginationElRef.value
         });
       }
-
       breakpointChanged.value = false;
-    }); // update on virtual update
+    });
+    provide('swiper', swiperRef);
 
+    // update on virtual update
     watch(virtualData, () => {
       nextTick(() => {
         updateOnVirtualData(swiperRef.value);
       });
-    }); // mount swiper
+    });
 
+    // mount swiper
     onMounted(() => {
       if (!swiperElRef.value) return;
       mountSwiper({
@@ -596,24 +570,20 @@ const Swiper = {
       if (swiperRef.value && !swiperRef.value.destroyed) {
         swiperRef.value.destroy(true, false);
       }
-    }); // bypass swiper instance to slides
+    });
 
+    // bypass swiper instance to slides
     function renderSlides(slides) {
       if (swiperParams.virtual) {
         return renderVirtual(swiperRef, slides, virtualData.value);
       }
-
-      if (!swiperParams.loop || swiperRef.value && swiperRef.value.destroyed) {
-        slides.forEach(slide => {
-          if (!slide.props) slide.props = {};
-          slide.props.swiperRef = swiperRef;
-        });
-        return slides;
-      }
-
-      return renderLoop(swiperRef, slides, swiperParams);
+      slides.forEach((slide, index) => {
+        if (!slide.props) slide.props = {};
+        slide.props.swiperRef = swiperRef;
+        slide.props.swiperSlideIndex = index;
+      });
+      return slides;
     }
-
     return () => {
       const {
         slides,
@@ -622,7 +592,9 @@ const Swiper = {
       return h(Tag, {
         ref: swiperElRef,
         class: uniqueClasses(containerClasses.value)
-      }, [slots['container-start'], needsNavigation(props) && [h('div', {
+      }, [slots['container-start'], h(WrapperTag, {
+        class: wrapperClass(swiperParams.wrapperClass)
+      }, [slots['wrapper-start'], renderSlides(slides), slots['wrapper-end']]), needsNavigation(props) && [h('div', {
         ref: prevElRef,
         class: 'swiper-button-prev'
       }), h('div', {
@@ -634,11 +606,8 @@ const Swiper = {
       }), needsPagination(props) && h('div', {
         ref: paginationElRef,
         class: 'swiper-pagination'
-      }), h(WrapperTag, {
-        class: 'swiper-wrapper'
-      }, [slots['wrapper-start'], renderSlides(slides), slots['wrapper-end']]), slots['container-end']]);
+      }), slots['container-end']]);
     };
   }
-
 };
 export { Swiper };

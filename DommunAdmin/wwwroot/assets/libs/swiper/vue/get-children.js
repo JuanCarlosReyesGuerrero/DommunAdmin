@@ -1,4 +1,7 @@
-function getChildren(originalSlots = {}, slidesRef, oldSlidesRef) {
+function getChildren(originalSlots, slidesRef, oldSlidesRef) {
+  if (originalSlots === void 0) {
+    originalSlots = {};
+  }
   const slides = [];
   const slots = {
     'container-start': [],
@@ -6,18 +9,15 @@ function getChildren(originalSlots = {}, slidesRef, oldSlidesRef) {
     'wrapper-start': [],
     'wrapper-end': []
   };
-
   const getSlidesFromElements = (els, slotName) => {
     if (!Array.isArray(els)) {
       return;
     }
-
     els.forEach(vnode => {
       const isFragment = typeof vnode.type === 'symbol';
       if (slotName === 'default') slotName = 'container-end';
-
       if (isFragment && vnode.children) {
-        getSlidesFromElements(vnode.children, 'default');
+        getSlidesFromElements(vnode.children, slotName);
       } else if (vnode.type && (vnode.type.name === 'SwiperSlide' || vnode.type.name === 'AsyncComponentWrapper')) {
         slides.push(vnode);
       } else if (slots[slotName]) {
@@ -25,8 +25,8 @@ function getChildren(originalSlots = {}, slidesRef, oldSlidesRef) {
       }
     });
   };
-
   Object.keys(originalSlots).forEach(slotName => {
+    if (typeof originalSlots[slotName] !== 'function') return;
     const els = originalSlots[slotName]();
     getSlidesFromElements(els, slotName);
   });
@@ -37,5 +37,4 @@ function getChildren(originalSlots = {}, slidesRef, oldSlidesRef) {
     slots
   };
 }
-
 export { getChildren };

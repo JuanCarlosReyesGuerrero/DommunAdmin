@@ -1,11 +1,5 @@
-import { BaseComponent, BaseProps } from './base';
-export interface HTMLContentProps extends BaseProps {
+export interface HTMLContentProps {
     content: string;
     parentElement?: string;
 }
-export declare class HTMLElement extends BaseComponent<HTMLContentProps> {
-    static defaultProps: {
-        parentElement: string;
-    };
-    render(): import("preact").VNode<any>;
-}
+export declare function HTMLElement(props: HTMLContentProps): import("preact").VNode<any>;

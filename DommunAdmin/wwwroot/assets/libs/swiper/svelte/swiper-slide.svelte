@@ -1,6 +1,6 @@
 <script>
-  import { onMount, onDestroy, beforeUpdate, afterUpdate } from 'svelte';
-  import { uniqueClasses } from './utils.js';
+  import { onMount, onDestroy, beforeUpdate, afterUpdate, setContext, getContext } from 'svelte';
+  import { uniqueClasses } from '../components-shared/utils.js';
 
   export let zoom = undefined;
   export let virtualIndex = undefined;
@@ -11,7 +11,7 @@
   let slideEl = null;
   let slideClasses = 'swiper-slide';
 
-  let swiper = null;
+  let swiper = getContext('swiper');
   let eventAttached = false;
 
   const updateClasses = (_, el, classNames) => {

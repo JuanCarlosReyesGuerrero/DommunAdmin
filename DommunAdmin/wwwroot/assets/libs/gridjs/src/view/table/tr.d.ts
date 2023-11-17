@@ -1,15 +1,7 @@
-import { h } from 'preact';
+import { h, ComponentChildren } from 'preact';
 import Row from '../../row';
-import { BaseComponent, BaseProps } from '../base';
-import Header from '../../header';
-export interface TRProps extends BaseProps {
+export declare function TR(props: {
     row?: Row;
-    header?: Header;
     messageRow?: boolean;
-}
-export declare class TR extends BaseComponent<TRProps> {
-    private getColumn;
-    private handleClick;
-    private getChildren;
-    render(): h.JSX.Element;
-}
+    children?: ComponentChildren;
+}): h.JSX.Element;

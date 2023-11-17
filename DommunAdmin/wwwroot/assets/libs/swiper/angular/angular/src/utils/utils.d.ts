@@ -1,4 +1,7 @@
 export declare function isObject(o: any): boolean;
+export declare function isEnabled(val: boolean | {
+    enabled?: boolean;
+}): boolean;
 export declare function isShowEl(val: any, obj: any, el: any): boolean;
 export declare function extend(target: any, src: any): void;
 export declare function coerceBooleanProperty(value: any): boolean;

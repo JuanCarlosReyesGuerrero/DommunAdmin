@@ -11,7 +11,6 @@ import {
   HashNavigationOptions,
   HistoryOptions,
   KeyboardOptions,
-  LazyOptions,
   MousewheelOptions,
   NavigationOptions,
   PaginationOptions,
@@ -23,7 +22,7 @@ import {
   FreeModeOptions,
   GridOptions,
 } from '../types';
-import { ComponentOptionsMixin, DefineComponent, PropType } from 'vue';
+import { ComponentOptionsMixin, DefineComponent, PropType, Ref } from 'vue';
 import { SwiperOptions, Swiper as SwiperClass } from '../types';
 
 declare const Swiper: DefineComponent<
@@ -47,6 +46,10 @@ declare const Swiper: DefineComponent<
     direction: {
       type: PropType<SwiperOptions['direction']>;
       default: SwiperOptions['direction'];
+    };
+    oneWayMovement: {
+      type: PropType<SwiperOptions['oneWayMovement']>;
+      default: SwiperOptions['oneWayMovement'];
     };
     touchEventsTarget: {
       type: PropType<SwiperOptions['touchEventsTarget']>;
@@ -108,11 +111,15 @@ declare const Swiper: DefineComponent<
       default: undefined;
     };
     spaceBetween: {
-      type: NumberConstructor;
+      type: PropType<SwiperOptions['spaceBetween']>;
       default: undefined;
     };
     slidesPerView: {
       type: PropType<SwiperOptions['slidesPerView']>;
+      default: undefined;
+    };
+    maxBackfaceHiddenSlides: {
+      type: NumberConstructor;
       default: undefined;
     };
     slidesPerGroup: {
@@ -244,31 +251,12 @@ declare const Swiper: DefineComponent<
       type: BooleanConstructor;
       default: undefined;
     };
-    preloadImages: {
-      type: BooleanConstructor;
-      default: undefined;
-    };
-    updateOnImagesReady: {
-      type: BooleanConstructor;
-      default: undefined;
-    };
     loop: { type: BooleanConstructor; default: undefined };
-    loopAdditionalSlides: {
-      type: NumberConstructor;
-      default: undefined;
-    };
     loopedSlides: {
       type: NumberConstructor;
       default: undefined;
     };
-    loopFillGroupWithBlank: {
-      type: BooleanConstructor;
-      default: undefined;
-    };
-    loopPreventsSlide: {
-      type: BooleanConstructor;
-      default: undefined;
-    };
+    loopPreventsSliding: { type: BooleanConstructor; default: undefined };
     rewind: { type: BooleanConstructor; default: undefined };
     allowSlidePrev: {
       type: BooleanConstructor;
@@ -306,15 +294,7 @@ declare const Swiper: DefineComponent<
       type: StringConstructor;
       default: undefined;
     };
-    slideBlankClass: {
-      type: StringConstructor;
-      default: undefined;
-    };
     slideActiveClass: {
-      type: StringConstructor;
-      default: undefined;
-    };
-    slideDuplicateActiveClass: {
       type: StringConstructor;
       default: undefined;
     };
@@ -322,15 +302,7 @@ declare const Swiper: DefineComponent<
       type: StringConstructor;
       default: undefined;
     };
-    slideDuplicateClass: {
-      type: StringConstructor;
-      default: undefined;
-    };
     slideNextClass: {
-      type: StringConstructor;
-      default: undefined;
-    };
-    slideDuplicateNextClass: {
       type: StringConstructor;
       default: undefined;
     };
@@ -338,12 +310,16 @@ declare const Swiper: DefineComponent<
       type: StringConstructor;
       default: undefined;
     };
-    slideDuplicatePrevClass: {
+    wrapperClass: {
       type: StringConstructor;
       default: undefined;
     };
-    wrapperClass: {
+    lazyPreloaderClass: {
       type: StringConstructor;
+      default: undefined;
+    };
+    lazyPreloadPrevNext: {
+      type: NumberConstructor;
       default: undefined;
     };
     runCallbacksOnInit: {
@@ -407,10 +383,6 @@ declare const Swiper: DefineComponent<
       type: PropType<KeyboardOptions | boolean>;
       default: undefined;
     };
-    lazy: {
-      type: PropType<LazyOptions | boolean>;
-      default: undefined;
-    };
     mousewheel: {
       type: PropType<MousewheelOptions | boolean>;
       default: undefined;
@@ -466,6 +438,18 @@ declare const Swiper: DefineComponent<
    */
   autoplayStop: (swiper: SwiperClass) => void;
   /**
+   * Event will be fired on autoplay pause
+   */
+  autoplayPause: (swiper: SwiperClass) => void;
+  /**
+   * Event will be fired on autoplay resume
+   */
+  autoplayResume: (swiper: SwiperClass) => void;
+  /**
+   * Event triggers continuously while autoplay is enabled. It contains time left (in ms) before transition to next slide and percentage of that time related to autoplay delay
+   */
+  autoplayTimeLeft: (swiper: SwiperClass, timeLeft: number, percentage: number) => void;
+  /**
    * Event will be fired when slide changed with autoplay
    */
   autoplay: (swiper: SwiperClass) => void;/**
@@ -479,20 +463,6 @@ declare const Swiper: DefineComponent<
    * Event will be fired on key press
    */
   keyPress: (swiper: SwiperClass, keyCode: string) => void;/**
-   * Event will be fired in the beginning of lazy loading of image
-   */
-  lazyImageLoad: (swiper: SwiperClass, slideEl: HTMLElement, imageEl: HTMLElement) => void;
-  /**
-   * Event will be fired when lazy loading image will be loaded
-   */
-  lazyImageReady: (swiper: SwiperClass, slideEl: HTMLElement, imageEl: HTMLElement) => void;/**
-   * Event will be fired on navigation hide
-   */
-  navigationHide: (swiper: SwiperClass) => void;
-  /**
-   * Event will be fired on navigation show
-   */
-  navigationShow: (swiper: SwiperClass) => void;/**
    * Event will be fired after pagination rendered
    */
   paginationRender: (swiper: SwiperClass, paginationEl: HTMLElement) => void;
@@ -511,9 +481,21 @@ declare const Swiper: DefineComponent<
    * Event will be fired on pagination show
    */
   paginationShow: (swiper: SwiperClass) => void;/**
-   * Event will be fired on mousewheel scroll
+   * Event will be fired on navigation hide
    */
-  scroll: (swiper: SwiperClass, event: WheelEvent) => void;/**
+  navigationHide: (swiper: SwiperClass) => void;
+  /**
+   * Event will be fired on navigation show
+   */
+  navigationShow: (swiper: SwiperClass) => void;
+  /**
+   * Event will be fired on navigation prev button click
+   */
+  navigationPrev: (swiper: SwiperClass) => void;
+  /**
+   * Event will be fired on navigation next button click
+   */
+  navigationNext: (swiper: SwiperClass) => void;/**
    * Event will be fired on draggable scrollbar drag start
    */
   scrollbarDragStart: (swiper: SwiperClass, event: MouseEvent | TouchEvent | PointerEvent) => void;
@@ -527,6 +509,9 @@ declare const Swiper: DefineComponent<
    * Event will be fired on draggable scrollbar drag end
    */
   scrollbarDragEnd: (swiper: SwiperClass, event: MouseEvent | TouchEvent | PointerEvent) => void;/**
+   * Event will be fired on mousewheel scroll
+   */
+  scroll: (swiper: SwiperClass, event: WheelEvent) => void;/**
    * Event will be fired on zoom change
    */
   zoomChange: (swiper: SwiperClass, scale: number, imageEl: HTMLElement, slideEl: HTMLElement) => void;
@@ -653,11 +638,6 @@ declare const Swiper: DefineComponent<
    * Event will be fired when user double tap on Swiper's container. Receives `touchend` event as an arguments
    */
   doubleTap: (swiper: SwiperClass, event: MouseEvent | TouchEvent | PointerEvent) => void;
-
-  /**
-   * Event will be fired right after all inner images are loaded. updateOnImagesReady should be also enabled
-   */
-  imagesReady: (swiper: SwiperClass) => void;
 
   /**
    * Event will be fired when Swiper progress is changed, as an arguments it receives progress that is always from 0 to 1
@@ -850,6 +830,7 @@ declare const SwiperSlide: DefineComponent<{
     default: string;
   };
   swiperRef: { type: PropType<SwiperClass>; required: false };
+  lazy: { type: BooleanConstructor; default: false };
   zoom: { type: BooleanConstructor; default: undefined };
   virtualIndex: {
     type: StringConstructor | NumberConstructor;
@@ -857,4 +838,12 @@ declare const SwiperSlide: DefineComponent<{
   };
 }>;
 
-export { Swiper, SwiperSlide };
+declare const useSwiper: () => Ref<SwiperClass>;
+declare const useSwiperSlide: () => Ref<{
+  isActive: boolean;
+  isVisible: boolean;
+  isPrev: boolean;
+  isNext: boolean;
+}>;
+
+export { Swiper, SwiperSlide, useSwiper, useSwiperSlide };

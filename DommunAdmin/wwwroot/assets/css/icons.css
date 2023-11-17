@@ -1,7 +1,7 @@
 /*
 Template Name: Velzon - Admin & Dashboard Template
 Author: Themesbrand
-Version: 1.6.0
+Version: 3.0.0
 Website: https://Themesbrand.com/
 Contact: Themesbrand@gmail.com
 File: Icons Css File
@@ -26651,6 +26651,7 @@ File: Icons Css File
     transform: rotate(359deg);
   }
 }
+
 @font-face {
   font-family: "boxicons";
   font-weight: normal;
@@ -42016,10 +42017,8 @@ readers do not read off random characters that represent icons */
 */
 @font-face {
   font-family: "remixicon";
-  src: url("../fonts/remixicon.eot?t=1590207869815");
-  /* IE9*/
-  src: url("../fonts/remixicon.eot?t=1590207869815#iefix") format("embedded-opentype"), url("../fonts/remixicon.woff2?t=1590207869815") format("woff2"), url("../fonts/remixicon.woff?t=1590207869815") format("woff"), url("../fonts/remixicon.ttf?t=1590207869815") format("truetype"), url("../fonts/remixicon.svg?t=1590207869815#remixicon") format("svg");
-  /* iOS 4.1- */
+  src: url("../fonts/remixicon.eot?t=1590207869815"); /* IE9*/
+  src: url("../fonts/remixicon.eot?t=1590207869815#iefix") format("embedded-opentype"), url("../fonts/remixicon.woff2?t=1590207869815") format("woff2"), url("../fonts/remixicon.woff?t=1590207869815") format("woff"), url("../fonts/remixicon.ttf?t=1590207869815") format("truetype"), url("../fonts/remixicon.svg?t=1590207869815#remixicon") format("svg"); /* iOS 4.1- */
   font-display: swap;
 }
 [class^=ri-], [class*=" ri-"] {

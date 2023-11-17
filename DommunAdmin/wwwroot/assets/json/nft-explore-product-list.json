@@ -1,7 +1,7 @@
 [
 	{
         "id": 1,
-        "productImg": "assets/images/nft/gif/img-3.gif",
+        "productImg": "https://img.themesbrand.com/velzon/images/img-3.gif",
         "like": true,
         "title": "Walking On Air",
         "category": "Artwork",
@@ -10,7 +10,7 @@
         "price": "14.167"
     },{
         "id": 2,
-        "productImg": "assets/images/nft/img-03.jpg",
+        "productImg": "/assets/images/nft/img-03.jpg",
         "like": false,
         "salesType": "On Auction",
         "title": "Creative Filtered Portrait",
@@ -20,7 +20,7 @@
         "price": "67.36"
     },{
         "id": 3,
-        "productImg": "assets/images/nft/img-02.jpg",
+        "productImg": "/assets/images/nft/img-02.jpg",
         "like": true,
         "salesType": "Has Offers",
         "title": "The Chirstoper",
@@ -30,7 +30,7 @@
         "price": "394.7"
     },{
         "id": 4,
-        "productImg": "assets/images/nft/gif/img-4.gif",
+        "productImg": "https://img.themesbrand.com/velzon/images/img-4.gif",
         "like": false,
         "salesType": "Has Offers",
         "title": "Evolved Reality",
@@ -40,7 +40,7 @@
         "price": "3.167"
     },{
         "id": 5,
-        "productImg": "assets/images/nft/img-01.jpg",
+        "productImg": "/assets/images/nft/img-01.jpg",
         "like": false,
         "salesType": "Has Offers",
         "title": "Abstract Face Painting",
@@ -50,7 +50,7 @@
         "price": "97.8"
     },{
         "id": 6,
-        "productImg": "assets/images/nft/img-05.jpg",
+        "productImg": "/assets/images/nft/img-05.jpg",
         "like": true,
         "salesType": "On Auction",
         "title": "Long-tailed Macaque",
@@ -60,7 +60,7 @@
         "price": "745.14"
     },{
         "id": 7,
-        "productImg": "assets/images/nft/img-06.jpg",
+        "productImg": "/assets/images/nft/img-06.jpg",
         "like": true,
         "salesType": "On Auction",
         "title": "Robotic Body Art",
@@ -70,7 +70,7 @@
         "price": "34.81"
     },{
         "id": 8,
-        "productImg": "assets/images/nft/gif/img-2.gif",
+        "productImg": "https://img.themesbrand.com/velzon/images/img-2.gif",
         "like": false,
         "salesType": "On Auction",
         "title": "Trendy Fashion Portraits",
@@ -80,7 +80,7 @@
         "price": "563.81"
     },{
         "id": 9,
-        "productImg": "assets/images/nft/img-04.jpg",
+        "productImg": "/assets/images/nft/img-04.jpg",
         "like": true,
         "salesType": "Has Offers",
         "title": "Smillevers Crypto",
@@ -90,7 +90,7 @@
         "price": "34.81"
     },{
         "id": 10,
-        "productImg": "assets/images/nft/gif/img-1.gif",
+        "productImg": "https://img.themesbrand.com/velzon/images/img-1.gif",
         "like": false,
         "salesType": "On Auction",
         "title": "Patterns Arts & Culture",
@@ -100,7 +100,7 @@
         "price": "14.167"
     },{
         "id": 11,
-        "productImg": "assets/images/nft/img-03.jpg",
+        "productImg": "/assets/images/nft/img-03.jpg",
         "like": false,
         "salesType": "On Auction",
         "title": "Creative Filtered Portrait",
@@ -110,7 +110,7 @@
         "price": "267.36"
     },{
         "id": 12,
-        "productImg": "assets/images/nft/gif/img-4.gif",
+        "productImg": "https://img.themesbrand.com/velzon/images/img-4.gif",
         "like": false,
         "salesType": "Has Offers",
         "title": "Evolved Reality",
@@ -120,7 +120,7 @@
         "price": "324.26"
     },{
         "id": 13,
-        "productImg": "assets/images/nft/img-01.jpg",
+        "productImg": "/assets/images/nft/img-01.jpg",
         "like": false,
         "salesType": "Has Offers",
         "title": "Abstract Face Painting",
@@ -130,7 +130,7 @@
         "price": "245.8"
     },{
         "id": 14,
-        "productImg": "assets/images/nft/img-05.jpg",
+        "productImg": "/assets/images/nft/img-05.jpg",
         "like": true,
         "salesType": "On Auction",
         "title": "Long-tailed Macaque",
@@ -140,7 +140,7 @@
         "price": "340.14"
     },{
         "id": 15,
-        "productImg": "assets/images/nft/img-06.jpg",
+        "productImg": "/assets/images/nft/img-06.jpg",
         "like": true,
         "salesType": "On Auction",
         "title": "Robotic Body Art",

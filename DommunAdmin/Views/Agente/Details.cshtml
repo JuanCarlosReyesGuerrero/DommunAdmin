@@ -1,4 +1,4 @@
-﻿@model DommunAdmin.Models.AgenteDto
+﻿@* @model DommunAdmin.Models.AgenteDto
 
 @{
     ViewData["Title"] = "Details";
@@ -14,7 +14,7 @@
                 <h5 class="card-title mb-0">Agente</h5>
             </div>
             <div class="card-body">
-                <dl class="row">                  
+                <dl class="row">
                     <dt class="col-sm-2">
                         @Html.DisplayNameFor(model => model.slug)
                     </dt>
@@ -109,3 +109,220 @@
     <a asp-action="Edit" asp-route-id="@Model.id" class="btn btn-success">Editar</a>
     <a asp-action="Index" class="btn btn-info">Regresar</a>
 </div>
+ *@
+
+
+
+
+
+
+
+
+ @model DommunAdmin.Models.AgenteDto
+
+@{
+    ViewBag.Title = "Details";
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
+<head>
+    @Html.Partial("~/Views/Shared/_title_meta.cshtml")
+    @Html.Partial("~/Views/Shared/_head_css.cshtml")
+</head>
+<body>
+    <!-- Begin page -->
+    <div id="layout-wrapper">
+        @Html.Partial("~/Views/Shared/_menu.cshtml")
+
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+        <div class="main-content">
+
+            <div class="page-content">
+                <div class="container-fluid">
+
+                    <div class="position-relative mx-n4 mt-n4">
+                        <div class="profile-wid-bg profile-setting-img">
+                            <img src="~/assets/images/profile-bg.jpg" class="profile-wid-img" alt="">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xxl-3">
+                            <div class="card mt-n5">
+                                <div class="card-body p-4">
+                                    <div class="text-center">
+                                        <div class="profile-user position-relative d-inline-block mx-auto  mb-4">
+                                            <img src="@Model.fotoPerfil" class="rounded-circle avatar-xl img-thumbnail user-profile-image"
+                                                 alt="user-profile-image" />
+                                        </div>
+                                        <h5 class="fs-16 mb-1">@Model.fullName</h5>
+                                        <p class="text-muted mb-0">Agente</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end card-->
+
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-4">
+                                        <div class="flex-grow-1">
+                                            <h5 class="card-title mb-0">Redes Sociales</h5>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 d-flex">
+                                        <div class="avatar-xs d-block flex-shrink-0 me-3">
+                                            <span class="avatar-title rounded-circle fs-16 bg-primary">
+                                                <i class="ri-facebook-fill"></i>
+                                            </span>
+                                        </div>
+                                        <input asp-for="facebook" class="form-control" />
+                                        <span asp-validation-for="facebook" class="text-danger"></span>
+                                    </div>
+                                    <div class="mb-3 d-flex">
+                                        <div class="avatar-xs d-block flex-shrink-0 me-3">
+                                            <span class="avatar-title rounded-circle fs-16 bg-primary">
+                                                <i class="ri-twitter-fill"></i>
+                                            </span>
+                                        </div>
+                                        <input asp-for="twitter" class="form-control" />
+                                        <span asp-validation-for="twitter" class="text-danger"></span>
+                                    </div>
+                                    <div class="mb-3 d-flex">
+                                        <div class="avatar-xs d-block flex-shrink-0 me-3">
+                                            <span class="avatar-title rounded-circle fs-16 bg-primary">
+                                                <i class="ri-linkedin-fill"></i>
+                                            </span>
+                                        </div>
+                                        <input asp-for="linkedin" class="form-control" />
+                                        <span asp-validation-for="linkedin" class="text-danger"></span>
+                                    </div>
+                                    <div class="mb-3 d-flex">
+                                        <div class="avatar-xs d-block flex-shrink-0 me-3">
+                                            <span class="avatar-title rounded-circle fs-16 bg-primary">
+                                                <i class="ri-instagram-fill"></i>
+                                            </span>
+                                        </div>
+                                        <input asp-for="instagram" class="form-control" />
+                                        <span asp-validation-for="instagram" class="text-danger"></span>
+                                    </div>
+                                    <div class="mb-3 d-flex">
+                                        <div class="avatar-xs d-block flex-shrink-0 me-3">
+                                            <span class="avatar-title rounded-circle fs-16 bg-primary">
+                                                <i class="ri-global-fill"></i>
+                                            </span>
+                                        </div>
+                                        <input asp-for="website" class="form-control" />
+                                        <span asp-validation-for="website" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end card-->
+                        </div>
+                        <!--end col-->
+                        <div class="col-xxl-9">
+                            <div class="card mt-xxl-n5">
+                                <div class="card-header">
+                                    <ul class="nav nav-tabs-custom rounded card-header-tabs border-bottom-0"
+                                        role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" data-bs-toggle="tab" href="#personalDetails"
+                                               role="tab">
+                                                <i class="fas fa-home"></i>
+                                                Datos Personales
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="card-body p-4">
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="personalDetails" role="tabpanel">
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label asp-for="slug" class="control-label"></label>
+                                                        <input asp-for="slug" class="form-control" />
+                                                        <span asp-validation-for="slug" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+                                                <!--end col-->
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label asp-for="nombres" class="control-label"></label>
+                                                        <input asp-for="nombres" class="form-control" />
+                                                        <span asp-validation-for="nombres" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+                                                <!--end col-->
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label asp-for="apellidos" class="control-label"></label>
+                                                        <input asp-for="apellidos" class="form-control" />
+                                                        <span asp-validation-for="apellidos" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+                                                <!--end col-->
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label asp-for="email" class="control-label"></label>
+                                                        <input asp-for="email" class="form-control" />
+                                                        <span asp-validation-for="email" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+                                                <!--end col-->
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label asp-for="celular" class="control-label"></label>
+                                                        <input asp-for="celular" class="form-control" />
+                                                        <span asp-validation-for="celular" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+                                                <!--end col-->
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3 pb-2">
+                                                        <label asp-for="descripcionPerfil" class="control-label"></label>
+                                                        <textarea asp-for="descripcionPerfil" class="form-control" rows="5" cols="40"></textarea>
+                                                        <span asp-validation-for="descripcionPerfil" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+                                                <!--end col-->
+                                                <div class="col-lg-12">
+                                                    <div class="hstack gap-2 justify-content-end">                                                      
+                                                        <a asp-action="Edit" asp-route-id="@Model.id" class="btn btn-success">Editar</a>
+                                                        <a asp-action="Index" class="btn btn-info">Regresar</a>
+                                                    </div>
+                                                </div>
+                                                <!--end col-->
+                                            </div>
+                                            <!--end row-->
+                                        </div>
+                                        <!--end tab-pane-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end col-->
+                    </div>
+                    <!--end row-->
+
+                </div>
+            </div>
+            @Html.Partial("~/Views/Shared/_footer.cshtml")
+        </div>
+
+    </div>
+    <!-- END layout-wrapper -->
+    @* @Html.Partial("~/Views/Shared/_customizer.cshtml")  *@
+
+    @Html.Partial("~/Views/Shared/_vendor_scripts.cshtml")
+
+    <!-- profile-setting init js -->
+    <script src="~/assets/js/pages/profile-setting.init.js"></script>
+
+    <!-- App js -->
+    <script src="~/assets/js/app.js"></script>
+</body>
+</html></html>

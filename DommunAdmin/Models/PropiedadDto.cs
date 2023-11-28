@@ -7,7 +7,7 @@ namespace DommunAdmin.Models
     {
         [HiddenInput]
         public int id { get; set; }
-
+                
         [Display(Name = "Titulo")]
         public string? titulo { get; set; }
 

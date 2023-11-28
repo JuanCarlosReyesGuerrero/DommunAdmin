@@ -1,124 +1,4 @@
-﻿@* @model DommunAdmin.Models.AgenteDto
-
-@{
-    ViewData["Title"] = "Details";
-}
-
-<h1>Details</h1>
-<hr />
-
-<div class="row">
-    <div class="col-lg-12">
-        <div class="card">
-            <div class="card-header">
-                <h5 class="card-title mb-0">Agente</h5>
-            </div>
-            <div class="card-body">
-                <dl class="row">
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.slug)
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.slug)
-                    </dd>
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.nombres)
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.nombres)
-                    </dd>
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.apellidos)
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.apellidos)
-                    </dd>
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.email)
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.email)
-                    </dd>
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.fotoPerfil)
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.fotoPerfil)
-                    </dd>
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.descripcionPerfil)
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.descripcionPerfil)
-                    </dd>
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.celular)
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.celular)
-                    </dd>
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.facebook)
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.facebook)
-                    </dd>
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.twitter)
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.twitter)
-                    </dd>
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.linkedin)
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.linkedin)
-                    </dd>
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.instagram)
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.instagram)
-                    </dd>
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.website)
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.website)
-                    </dd>
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.inmobiliaria.nombre)
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.inmobiliaria.nombre)
-                    </dd>
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.isActive)
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.isActive)
-                    </dd>
-                </dl>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.id" class="btn btn-success">Editar</a>
-    <a asp-action="Index" class="btn btn-info">Regresar</a>
-</div>
- *@
-
-
-
-
-
-
-
-
- @model DommunAdmin.Models.AgenteDto
+﻿@model DommunAdmin.Models.AgenteDto
 
 @{
     ViewBag.Title = "Details";
@@ -136,9 +16,6 @@
     <div id="layout-wrapper">
         @Html.Partial("~/Views/Shared/_menu.cshtml")
 
-        <!-- ============================================================== -->
-        <!-- Start right Content here -->
-        <!-- ============================================================== -->
         <div class="main-content">
 
             <div class="page-content">
@@ -281,6 +158,16 @@
                                                     </div>
                                                 </div>
                                                 <!--end col-->
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label asp-for="isActive" class="control-label"></label>
+                                                        <div class="form-group form-check">
+                                                            <label class="form-check-label">
+                                                                <input class="form-check-input" asp-for="isActive" /> @Html.DisplayNameFor(model => model.isActive)
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <div class="col-lg-12">
                                                     <div class="mb-3 pb-2">
                                                         <label asp-for="descripcionPerfil" class="control-label"></label>
@@ -290,9 +177,9 @@
                                                 </div>
                                                 <!--end col-->
                                                 <div class="col-lg-12">
-                                                    <div class="hstack gap-2 justify-content-end">                                                      
-                                                        <a asp-action="Edit" asp-route-id="@Model.id" class="btn btn-success">Editar</a>
-                                                        <a asp-action="Index" class="btn btn-info">Regresar</a>
+                                                    <div class="hstack gap-2 justify-content-end">
+                                                        <a asp-action="Edit" asp-route-id="@Model.id" class="btn btn-primary">Editar</a>
+                                                        <a asp-action="Index" class="btn btn-soft-success">Regresar</a>
                                                     </div>
                                                 </div>
                                                 <!--end col-->
